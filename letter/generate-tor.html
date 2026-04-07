@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOR Generator | IEEE SB UNM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylegtor.css">
+</head>
+
+<body>
+
+    <nav class="header-strip px-5 py-5 sm:px-8 sm:py-7 z-[100] relative">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+
+            <div class="flex items-center gap-3">
+                <div class="ieee-pill px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg class="hidden sm:block" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29"
+                        stroke-width="2.2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                    <span class="pill-text text-center">IEEE SB UNM</span>
+                </div>
+                <div>
+                    <h1 class="header-title">TOR <span style="color:#D91C29">Generate</span></h1>
+                    <p class="header-subtitle hidden sm:block">IEEE Student Branch Universitas Nusa Mandiri</p>
+                </div>
+            </div>
+
+            <div id="menu"
+                class="hidden sm:flex flex-col sm:flex-row absolute sm:static top-full left-0 w-full sm:w-auto bg-[#0f172a] sm:bg-transparent px-6 sm:px-0 py-6 sm:py-0 gap-5 text-sm font-semibold text-white shadow-xl sm:shadow-none">
+                <div class="relative group">
+                    <button onclick="toggleDropdown('wp')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        Workplan <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="dropdown-wp"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="../workplan/registry.html" class="block px-4 py-2 hover:bg-gray-100">Data
+                                Workplan</a>
+                            <a href="../workplan/registry-form.html" class="block px-4 py-2 hover:bg-gray-100">Form
+                                Data</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button onclick="toggleDropdown('lt')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        Letter <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="dropdown-lt"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="surat.html" class="block px-4 py-2 hover:bg-gray-100">Surat</a>
+                            <a href="generate-tor.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">TOR</a>
+                            <a href="tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">Arsip
+                                TOR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="menuBtn" class="sm:hidden text-white p-2 hover:bg-white/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-10 pb-20">
+
+        <form id="torForm" class="space-y-6">
+
+            <div class="section-card" style="animation-delay:0ms">
+                <div class="section-header">
+                    <div class="step-num">1</div>
+                    Identitas Utama & Header
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="lg:col-span-2">
+                        <label class="input-label">Event Name</label>
+                        <input type="text" name="eventname" placeholder="e.g. Workshop UI/UX Design" class="input-field"
+                            required />
+                    </div>
+                    <div>
+                        <label class="input-label">Collaborator</label>
+                        <input type="text" name="collaborator" placeholder="e.g. IEEE SB PNJ" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Event Date</label>
+                        <input type="text" name="eventdate" placeholder="e.g. 20 Oct 2026" class="input-field" />
+                    </div>
+                    <div class="lg:col-span-2">
+                        <label class="input-label">Theme of Event</label>
+                        <input type="text" name="tema" placeholder="e.g. Membangun Kreativitas di Era Digital"
+                            class="input-field" />
+                    </div>
+                    <div class="lg:col-span-2">
+                        <label class="input-label">Executive Director</label>
+                        <input type="text" name="kpname" placeholder="e.g. Rivky Putra Setiawan" class="input-field" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="section-card" style="animation-delay:100ms">
+                    <div class="section-header">
+                        <div class="step-num">2</div>Latar Belakang & Deskripsi
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="input-label">Latar Belakang</label>
+                            <textarea name="latarbelakang" rows="4" class="input-field"
+                                placeholder="Mengapa kegiatan ini diadakan?"></textarea>
+                        </div>
+                        <div>
+                            <label class="input-label">Deskripsi Kegiatan</label>
+                            <textarea name="deskegiatan" rows="4" class="input-field"
+                                placeholder="Gambaran umum pelaksanaan kegiatan..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-card" style="animation-delay:200ms">
+                    <div class="section-header">
+                        <div class="step-num">3</div>Tujuan & Output
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="input-label">Tujuan Kegiatan</label>
+                            <textarea name="tujuankegiatan" rows="4" class="input-field"
+                                placeholder="Apa yang ingin dicapai?"></textarea>
+                        </div>
+                        <div>
+                            <label class="input-label">Output Kegiatan</label>
+                            <textarea name="outputkegiatan" rows="4" class="input-field"
+                                placeholder="Hasil nyata dari kegiatan ini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card" style="animation-delay:300ms">
+                <div class="section-header">
+                    <div class="step-num">4</div>Detail Pelaksanaan
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+                    <div class="lg:col-span-2">
+                        <label class="input-label">Jenis Kegiatan</label>
+                        <input type="text" name="eventtype" placeholder="Webinar / Workshop" class="input-field" />
+                    </div>
+                    <div class="lg:col-span-2">
+                        <label class="input-label">Lokasi</label>
+                        <input type="text" name="location" placeholder="Zoom Meeting / Offline" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Jam Mulai</label>
+                        <input type="text" name="jmulai" placeholder="09:00" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Jam Selesai</label>
+                        <input type="text" name="jselesai" placeholder="12:00" class="input-field" />
+                    </div>
+                    <div class="col-span-2 lg:col-span-3">
+                        <label class="input-label">Deskripsi Peserta</label>
+                        <input type="text" name="jpeserta" placeholder="Mahasiswa Aktif UNM" class="input-field" />
+                    </div>
+                    <div class="col-span-2 lg:col-span-3">
+                        <label class="input-label">Target Minimal</label>
+                        <input type="text" name="tpeserta" placeholder="100 Peserta" class="input-field" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="section-card" style="animation-delay:400ms">
+                    <div class="section-header">
+                        <div class="step-num">5</div>Timeline
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[0.65rem] font-bold text-stone-300 w-4">1</span>
+                            <input type="text" name="timeline1" placeholder="Tanggal Kegiatan"
+                                class="input-field py-2.5" />
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[0.65rem] font-bold text-stone-300 w-4">2</span>
+                            <input type="text" name="timeline2" placeholder="Tanggal Kegiatan"
+                                class="input-field py-2.5" />
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[0.65rem] font-bold text-stone-300 w-4">3</span>
+                            <input type="text" name="timeline3" placeholder="Tanggal Kegiatan"
+                                class="input-field py-2.5" />
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[0.65rem] font-bold text-stone-300 w-4">4</span>
+                            <input type="text" name="timeline4" placeholder="Tanggal Kegiatan"
+                                class="input-field py-2.5" />
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[0.65rem] font-bold text-stone-300 w-4">5</span>
+                            <input type="text" name="timeline5" placeholder="Tanggal Kegiatan"
+                                class="input-field py-2.5" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card lg:col-span-2" style="animation-delay:500ms">
+                    <div class="section-header">
+                        <div class="step-num">6</div>Susunan Acara
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa1" placeholder="08:00"
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa1" placeholder="08:30"
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa2" placeholder="08:30"
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa2" placeholder="09:00"
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa3" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa3" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa4" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa4" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa5" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa5" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa6" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa6" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3">
+                                <input type="text" name="sa7" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                                <span class="text-stone-300 font-bold">→</span>
+                                <input type="text" name="ssa7" placeholder="... : ..."
+                                    class="input-field py-2.5 text-center w-full sm:w-28" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card" style="animation-delay:600ms">
+                <div class="section-header justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="step-num">7</div>Susunan Kepanitiaan
+                    </div>
+                    <button type="button" onclick="addPanitia()"
+                        class="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl text-[0.65rem] font-extrabold uppercase tracking-wider transition-all">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"
+                            viewBox="0 0 24 24">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Tambah Panitia
+                    </button>
+                </div>
+
+                <div id="panitia-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                    <div class="panitia-row group">
+                        <div class="relative">
+                            <span class="panitia-label">Jabatan / Posisi</span>
+                            <input type="text" name="panitia_jabatan[]" placeholder="e.g. Ketua Pelaksana"
+                                class="input-field py-2.5" value="Ketua Pelaksana" />
+                        </div>
+                        <div class="relative flex gap-3 items-end">
+                            <div class="flex-1">
+                                <span class="panitia-label">Nama & Ormawa</span>
+                                <div class="flex gap-2">
+                                    <input type="text" name="panitia_nama[]" placeholder="Nama Lengkap"
+                                        class="input-field py-2.5" />
+                                    <input type="text" name="panitia_ormawa[]" placeholder="Ormawa"
+                                        class="input-field py-2.5 w-1/3" />
+                                </div>
+                            </div>
+                            <button type="button" onclick="this.closest('.panitia-row').remove(); updateProgress();"
+                                class="mb-1 p-2 text-stone-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    viewBox="0 0 24 24">
+                                    <path d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card" style="animation-delay:700ms">
+                <div class="section-header">
+                    <div class="step-num">8</div>Teknis Kegiatan
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="input-label">Bentuk & Waktu Pelaksanaan</label>
+                        <textarea name="bentukwakpel" rows="3" class="input-field"
+                            placeholder="e.g. Kegiatan dilaksanakan secara daring via Zoom..."></textarea>
+                    </div>
+                    <div>
+                        <label class="input-label">Metode Pelaksanaan</label>
+                        <textarea name="metpel" rows="3" class="input-field"
+                            placeholder="e.g. Ceramah, tanya jawab, dan praktik langsung..."></textarea>
+                    </div>
+                    <div>
+                        <label class="input-label">Biaya & Ketentuan Pendaftaran</label>
+                        <textarea name="biaya_ket_pen" rows="3" class="input-field"
+                            placeholder="e.g. Gratis untuk anggota IEEE, Non-anggota Rp10k..."></textarea>
+                    </div>
+                    <div>
+                        <label class="input-label">Mekanisme Registrasi</label>
+                        <textarea name="mekanismeregkeh" rows="3" class="input-field"
+                            placeholder="e.g. Mengisi link gform yang disediakan..."></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="input-label">Rangkaian Acara (Overview)</label>
+                        <textarea name="rangkaianacara" rows="2" class="input-field"
+                            placeholder="Ringkasan singkat alur acara..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card" style="animation-delay:800ms">
+                <div class="section-header">
+                    <div class="step-num">9</div>Harapan & Penutup
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="input-label">Benefit Kegiatan (e.g. Skill, Network)</label>
+                        <textarea name="penutupbenefit" rows="3" class="input-field"
+                            placeholder="Diharapkan melalui kegiatan ini, peserta mendapatkan..."></textarea>
+                    </div>
+                    <div>
+                        <label class="input-label">Manfaat Kegiatan (e.g. Output jangka panjang)</label>
+                        <textarea name="penutupmanfaat" rows="3" class="input-field"
+                            placeholder="Kegiatan ini diharapkan mampu meningkatkan..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card" style="animation-delay:350ms">
+                <div class="section-header">
+                    <div class="step-num">10</div>Detail Substansi & Sasaran
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Substansi Kegiatan</label>
+                        <textarea name="substansikegiatan" rows="3" class="input-field"
+                            placeholder="Jelaskan isi materi atau inti kegiatan..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="input-label">Dokumentasi & Evaluasi</label>
+                            <textarea name="dokumentasievaluasi" rows="2" class="input-field"
+                                placeholder="Rencana dokumentasi..."></textarea>
+                        </div>
+                        <div>
+                            <label class="input-label">Sasaran Peserta</label>
+                            <textarea name="sasaranpeserta" rows="2" class="input-field"
+                                placeholder="Siapa target pesertanya?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6 pt-6 border-t border-stone-200">
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <span id="submitText">Generate Document</span>
+                    <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <script>
+        // Progress Logic
+        function updateProgress() {
+            const fields = document.querySelectorAll('#torForm input[name], #torForm textarea[name]');
+            let filled = 0;
+            fields.forEach(f => {
+                if (f.value.trim()) filled++;
+            });
+            const pct = Math.round((filled / fields.length) * 100);
+            document.getElementById('formProgress').style.width = pct + '%';
+        }
+        document.getElementById('torForm').addEventListener('input', updateProgress);
+
+        // Toast Logic
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'show ' + type;
+            icon.innerHTML = type === 'success' ?
+                '<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' :
+                '<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+            setTimeout(() => {
+                t.className = '';
+            }, 4000);
+        }
+
+        // Dropdown Logic
+        function toggleDropdown(id) {
+            const el = document.getElementById('dropdown-' + id);
+            const all = document.querySelectorAll('[id^="dropdown-"]');
+            all.forEach(d => {
+                if (d !== el) d.classList.add('hidden');
+            });
+            el.classList.toggle('hidden');
+        }
+        window.onclick = (e) => {
+            if (!e.target.closest('.group')) {
+                document.querySelectorAll('[id^="dropdown-"]').forEach(d => d.classList.add('hidden'));
+            }
+        }
+
+        // Form Submission
+        document.getElementById('torForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const txt = document.getElementById('submitText');
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyh0s6Wwp9tCWd87SWGbZB1cbYWD9VajvvoN4TReJuHPqkReGaUvi5GhSKeiCyLeN-Lyg/exec';
+
+            btn.disabled = true;
+            txt.textContent = 'Architecting Document...';
+
+            try {
+                const formData = new FormData(e.target);
+                const data = {};
+
+                formData.forEach((value, key) => {
+                    if (key.includes('[]')) {
+                        const cleanKey = key.replace('[]', ''); 
+                        if (!data[cleanKey]) {
+                            data[cleanKey] = []; // Inisialisasi array jika belum ada
+                        }
+                        data[cleanKey].push(value);
+                    } else {
+                        // Input biasa (seperti eventname)
+                        data[key] = value;
+                    }
+                });
+
+                // Kirim data ke AppScript
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(data)
+                });
+                const res = await response.json();
+
+                if (res.status === 'success') {
+                    window.open(res.url, '_blank');
+                    showToast('TOR berhasil dibuat!', 'success');
+                } else {
+                    showToast('Gagal: ' + (res.message || 'Cek koneksi script'), 'error');
+                }
+            } catch (err) {
+                showToast('Koneksi terputus atau script error!', 'error');
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                txt.textContent = 'Generate Document';
+            }
+        });
+
+        function addPanitia() {
+            const container = document.getElementById('panitia-container');
+            const newRow = document.createElement('div');
+            newRow.className = 'panitia-row group';
+            newRow.innerHTML = `
+        <div class="relative">
+            <span class="panitia-label">Jabatan / Posisi</span>
+            <input type="text" name="panitia_jabatan[]" placeholder="e.g. Sie Humas" class="input-field py-2.5" />
+        </div>
+        <div class="relative flex gap-3 items-end">
+            <div class="flex-1">
+                <span class="panitia-label">Nama & Ormawa</span>
+                <div class="flex gap-2">
+                    <input type="text" name="panitia_nama[]" placeholder="Nama Lengkap" class="input-field py-2.5" />
+                    <input type="text" name="panitia_ormawa[]" placeholder="Ormawa" class="input-field py-2.5 w-1/3" />
+                </div>
+            </div>
+            <button type="button" onclick="this.closest('.panitia-row').remove(); updateProgress();" class="mb-1 p-2 text-stone-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+    `;
+            container.appendChild(newRow);
+            updateProgress(); // Refresh progress bar
+        }
+
+        // Mobile Menu
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('menu').classList.toggle('hidden');
+            document.getElementById('menu').classList.toggle('flex');
+        });
+    </script>
+</body>
+
+</html>

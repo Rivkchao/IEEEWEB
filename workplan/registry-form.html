@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Registry | IEEE SB UNM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleregform.css">
+</head>
+
+<body>
+
+    <div id="formProgress"></div>
+    <div id="toast">
+        <svg id="toastIcon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"></svg>
+        <span id="toastMsg"></span>
+    </div>
+
+    <!-- ══════ HEADER ══════ -->
+    <div class="header-strip px-5 py-5 sm:px-8 sm:py-7">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+            <!-- Left -->
+            <div class="flex items-center gap-3">
+                <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0" class="px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29" stroke-width="2.2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif;font-size:0.68rem;font-weight:700;color:rgba(255,255,255,0.65);letter-spacing:0.05em">IEEE SB UNM</span>
+                </div>
+                <div>
+                    <h1 style="font-family:Syne,sans-serif;font-size:clamp(1rem,4vw,1.5rem);font-weight:800;color:#fff;line-height:1.1">
+                        Program <span style="color:#D91C29">Registry</span>
+                    </h1>
+                    <p class="hidden sm:block" style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px">Official IEEE Project Documentation Portal</p>
+                </div>
+            </div>
+            <!-- Right: action buttons -->
+            <div class="flex items-center gap-2">
+                <a href="registry.html" class="btn-secondary hidden sm:inline-flex" style="padding:10px 18px">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 6h18M3 14h18M3 18h18" />
+                    </svg>
+                    <span class="hidden sm:inline">View Registry</span>
+                </a>
+                <button type="submit" form="registryForm" id="submitBtnTop" class="btn-primary" style="padding:10px 18px">
+                    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                    <span class="hidden sm:inline">Send to System</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════ MAIN ══════ -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-8 pt-8 space-y-5">
+
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+            <div class="success-banner section-card" style="border-left-color:#22c55e">
+                <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#22c55e;border-radius:0 2px 2px 0"></div>
+                <div class="flex items-center gap-4">
+                    <div style="width:38px;height:38px;background:#f0fdf4;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family:Syne,sans-serif;font-weight:700;font-size:0.88rem;color:#0f0f0f">Transmission Complete</p>
+                        <p id="sync-message" style="font-size:0.75rem;color:#16a34a;margin-top:2px">Data successfully synchronized with Google Sheets.</p>
+                    </div>
+                    <div style="margin-left:auto;font-size:0.7rem;color:#9ca3af;font-family:DM Sans,sans-serif" id="redirectTimer">Redirecting in 3s…</div>
+                </div>
+                <?php
+                $scriptUrl = "https://script.google.com/macros/s/AKfycbw-ufUswip-z4c0BNNyo89TQp_-YhtvbGJbVlUyczffzythKyyuncEGsK4cTzx1O6Dl/exec";
+                $postData = [
+                    "work_plan"   => $_POST['program_name'],
+                    "description" => $_POST['description'],
+                    "event_type"  => $_POST['event_type'],
+                    "held_on"     => $_POST['be_held'],
+                    "location"    => $_POST['location'],
+                    "lead"        => $_POST['pic'],
+                    "kpis"        => $_POST['kpis'],
+                    "status"      => $_POST['indicator']
+                ];
+                $ch = curl_init($scriptUrl);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+                curl_exec($ch);
+                ?>
+                <script>
+                    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+                    let s = 3;
+                    const timer = document.getElementById('redirectTimer');
+                    const iv = setInterval(() => {
+                        s--;
+                        timer.textContent = 'Redirecting in ' + s + 's…';
+                        if (s <= 0) {
+                            clearInterval(iv);
+                            window.location.href = "registry.html";
+                        }
+                    }, 1000);
+                </script>
+            </div>
+        <?php endif; ?>
+
+        <form method="POST" id="registryForm" class="space-y-5">
+
+            <!-- ① Program Info -->
+            <div class="section-card" style="animation-delay:0ms">
+                <div class="section-header">
+                    <div class="step-num">1</div>Program Information
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Work Plan / Program Name</label>
+                        <input type="text" name="program_name" required placeholder="e.g. Project Alpha: Technical Seminar" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Event Description</label>
+                        <textarea name="description" rows="3" placeholder="Detailed objective and overview of the event…" class="input-field"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ② Event Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="section-card" style="animation-delay:60ms">
+                    <div class="section-header">
+                        <div class="step-num">2</div>Event Type & Location
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="input-label">Event Type</label>
+                            <div class="select-wrap">
+                                <select name="event_type" required class="input-field cursor-pointer">
+                                    <option value="" disabled selected>Select type…</option>
+                                    <option value="Social Activity">🤝 Social Activity</option>
+                                    <option value="Webinar">🎤 Webinar</option>
+                                    <option value="Workshop">🛠️ Workshop</option>
+                                    <option value="Techtalks">💻 Techtalks</option>
+                                    <option value="Internal">🏢 Internal</option>
+                                    <option value="Contest">🏆 Contest</option>
+                                    <option value="Festival">🎡 Festival</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="input-label">Location</label>
+                            <div class="select-wrap">
+                                <select name="location" required class="input-field cursor-pointer">
+                                    <option value="" disabled selected>Select location…</option>
+                                    <option value="Zoom meeting">🎥 Zoom Meeting</option>
+                                    <option value="Universitas Nusa Mandiri Kampus Margonda">🏫 UNM Kampus Margonda</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card" style="animation-delay:90ms">
+                    <div class="section-header">
+                        <div class="step-num">3</div>Schedule & Status
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="input-label">Held On (Month)</label>
+                            <div class="select-wrap">
+                                <select name="be_held" class="input-field cursor-pointer">
+                                    <option value="" disabled selected>Select month…</option>
+                                    <?php
+                                    $months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                    foreach ($months as $m) echo "<option value='$m'>$m</option>";
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="input-label">Status</label>
+                            <div class="select-wrap">
+                                <select name="indicator" class="input-field cursor-pointer">
+                                    <option value="Plan">🔵 Plan</option>
+                                    <option value="Pending">🟡 Pending</option>
+                                    <option value="Finish">🟢 Finish</option>
+                                    <option value="Cancel">🔴 Cancel</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③ PIC & KPIs -->
+            <div class="section-card" style="animation-delay:120ms">
+                <div class="section-header">
+                    <div class="step-num">4</div>Lead & Performance
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="input-label">PIC / Lead</label>
+                        <div class="select-wrap">
+                            <select name="pic" required class="input-field cursor-pointer">
+                                <option value="" disabled selected>Select PIC…</option>
+                                <option value="Chair">Chair</option>
+                                <option value="Vice Chair">Vice Chair</option>
+                                <option value="Treasurer">Treasurer</option>
+                                <option value="Secretary">Secretary</option>
+                                <option value="Webmaster">Webmaster</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="input-label">Performance Metrics (KPIs)</label>
+                        <input type="text" name="kpis" placeholder="e.g. 50 Participants, 4.5 Satisfaction" class="input-field" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 pb-4">
+                <!-- Meta info -->
+                <div class="flex items-center gap-3">
+                    <div style="width:36px;height:36px;background:#fff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg width="16" height="16" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family:Syne,sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af">Encryption Active</p>
+                        <p style="font-size:0.7rem;color:var(--blue);font-family:DM Sans,sans-serif;font-weight:500">Central Sheets Integration</p>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="flex gap-3 w-full sm:w-auto">
+                    <a href="registry.html" class="btn-secondary flex-1 sm:flex-none justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 6h18M3 14h18M3 18h18" />
+                        </svg>
+                        View Registry
+                    </a>
+                    <button type="submit" id="submitBtn" class="btn-primary flex-1 sm:flex-none justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                        <span id="submitText">Send to System</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        // Progress bar
+        function updateProgress() {
+            const fields = document.querySelectorAll('#registryForm input[name], #registryForm textarea[name], #registryForm select[name]');
+            let filled = 0;
+            fields.forEach(f => {
+                if (f.value.trim() && f.value !== '') filled++;
+            });
+            document.getElementById('formProgress').style.width = Math.round((filled / fields.length) * 100) + '%';
+        }
+        document.getElementById('registryForm').addEventListener('change', updateProgress);
+        document.getElementById('registryForm').addEventListener('input', updateProgress);
+
+        // Toast
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'show ' + type;
+            icon.innerHTML = type === 'success' ?
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' :
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+            setTimeout(() => {
+                t.className = '';
+            }, 3500);
+        }
+
+        // Disable submit on POST redirect (already handled server-side)
+        // Optional: loading state on submit
+        document.getElementById('registryForm').addEventListener('submit', function() {
+            const btn = document.getElementById('submitBtn');
+            const topBtn = document.getElementById('submitBtnTop');
+            const text = document.getElementById('submitText');
+            if (btn) btn.disabled = true;
+            if (topBtn) topBtn.disabled = true;
+            if (text) text.textContent = 'Processing…';
+            document.getElementById('formProgress').style.width = '90%';
+        });
+    </script>
+</body>
+
+</html>

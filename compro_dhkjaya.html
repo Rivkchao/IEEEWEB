@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT. DHK Jaya Manufacturing — Company Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --red: #C0392B;
+      --red-dark: #922B21;
+      --red-light: #E74C3C;
+      --gold: #D4A017;
+      --gold-light: #F0C040;
+      --cream: #FDF6EC;
+      --cream-dark: #F5E8D0;
+      --charcoal: #1A1A1A;
+      --charcoal-mid: #2C2C2C;
+      --gray: #6B6B6B;
+      --gray-light: #E8E0D5;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.25);
+      animation: slideDown .6s ease both;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: .5px;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, .7);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--charcoal);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(212, 160, 23, .04) 0, rgba(212, 160, 23, .04) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
+    }
+
+    .hero-accent {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192, 57, 43, .18) 0%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 160, 23, .15);
+      border: 1px solid rgba(212, 160, 23, .4);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      animation: blink 1.5s infinite;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--white);
+      animation: fadeUp .8s .4s ease both;
+    }
+
+    .hero-title .highlight {
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .hero-tagline {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, .6);
+      max-width: 480px;
+      animation: fadeUp .8s .6s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      animation: fadeUp .8s .8s ease both;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .3s, transform .2s;
+      letter-spacing: .3px;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(255, 255, 255, .85);
+      border: 1px solid rgba(255, 255, 255, .3);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .3s, color .3s, transform .2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      animation: fadeUp .8s 1s ease both;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 12px;
+      padding: 24px;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+
+    .stat-card:hover {
+      background: rgba(212, 160, 23, .08);
+      border-color: rgba(212, 160, 23, .4);
+      transform: translateY(-4px);
+    }
+
+    .stat-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 4px;
+      letter-spacing: .3px;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section {
+      padding: 100px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--gray);
+      max-width: 600px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--white);
+      max-width: 100%;
+      padding: 100px 0;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      height: 420px;
+    }
+
+    .about-img-block {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .about-img-main {
+      width: 320px;
+      height: 360px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, var(--red-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      animation: scaleIn .8s ease both;
+    }
+
+    .about-img-accent {
+      width: 180px;
+      height: 200px;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      animation: scaleIn .8s .3s ease both;
+    }
+
+    .about-year-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 180px;
+      background: var(--charcoal);
+      color: var(--gold-light);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      z-index: 10;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+      animation: fadeUp .8s .6s ease both;
+    }
+
+    .about-year-badge small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .6);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .value-list {
+      list-style: none;
+      margin-top: 32px;
+    }
+
+    .value-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-light);
+      animation: fadeLeft .6s ease both;
+    }
+
+    .value-list li:last-child {
+      border-bottom: none;
+    }
+
+    .v-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: rgba(192, 57, 43, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .v-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .v-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── PRODUCTS ── */
+    #products {
+      background: var(--cream);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--gray-light);
+      transition: transform .35s cubic-bezier(.25, .8, .25, 1), box-shadow .35s;
+      cursor: default;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(192, 57, 43, .12);
+    }
+
+    .product-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, .1));
+    }
+
+    .product-body {
+      padding: 24px;
+    }
+
+    .product-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .product-features {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feat-chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      background: rgba(192, 57, 43, .08);
+      color: var(--red-dark);
+      border-radius: 100px;
+      border: 1px solid rgba(192, 57, 43, .2);
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      background: var(--charcoal);
+      max-width: 100%;
+      padding: 100px 0;
+    }
+
+    .process-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .process-inner .section-title {
+      color: var(--white);
+    }
+
+    .process-inner .section-desc {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .process-inner .section-tag {
+      color: var(--gold-light);
+    }
+
+    .steps-timeline {
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .steps-timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--red) 0%, var(--gold) 100%);
+      opacity: .4;
+    }
+
+    .step {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 32px 0;
+      animation: fadeLeft .6s ease both;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(212, 160, 23, .12);
+      border: 2px solid rgba(212, 160, 23, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold-light);
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+
+    .step:hover .step-num {
+      background: rgba(212, 160, 23, .25);
+      border-color: var(--gold-light);
+      transform: scale(1.08);
+    }
+
+    .step-body {
+      padding-top: 14px;
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, .5);
+      max-width: 580px;
+    }
+
+    .step-icon {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    /* ── STANDARDS ── */
+    #standards {
+      background: var(--cream);
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+
+    .std-card {
+      text-align: center;
+      padding: 36px 20px;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+
+    .std-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .08);
+      border-color: var(--red);
+    }
+
+    .std-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 16px;
+      color: white;
+    }
+
+    .std-name {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .std-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── FACILITIES ── */
+    #facilities {
+      background: var(--white);
+      max-width: 100%;
+      padding: 100px 0;
+    }
+
+    .facilities-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .fac-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+
+    .fac-card {
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      border: 1px solid var(--gray-light);
+      transition: box-shadow .3s, border-color .3s, transform .3s;
+    }
+
+    .fac-card:hover {
+      box-shadow: 0 12px 40px rgba(192, 57, 43, .1);
+      border-color: rgba(192, 57, 43, .35);
+      transform: translateY(-4px);
+    }
+
+    .fac-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+    }
+
+    .fac-title {
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .fac-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--charcoal);
+      max-width: 100%;
+      padding: 100px 0 0;
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px 100px;
+    }
+
+    .contact-inner .section-title {
+      color: var(--white);
+    }
+
+    .contact-inner .section-tag {
+      color: var(--gold-light);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 52px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: rgba(212, 160, 23, .15);
+      border: 1px solid rgba(212, 160, 23, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .4);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .3s, background .3s;
+    }
+
+    .form-input:focus {
+      border-color: var(--gold-light);
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, .3);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      letter-spacing: .3px;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192, 57, 43, .4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .footer-logo span {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    .footer-cert {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cert-chip {
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 100px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, .5);
+      font-weight: 500;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: .6;
+        transform: translateY(-50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.08);
+      }
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .3;
+      }
+    }
+
+    @keyframes countUp {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      z-index: 200;
+      transition: width .1s;
+      width: 0%;
+    }
+
+    /* ── FLOATING ORNAMENT ── */
+    .floating-tag {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: var(--red);
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 24px rgba(192, 57, 43, .5);
+      cursor: pointer;
+      z-index: 99;
+      animation: bounce 2.5s ease-in-out infinite;
+      text-decoration: none;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* ── RESPONSIVE MOBILE OPTIMIZATION (VERSI BERSIH) ── */
+  @media (max-width: 900px) {
+    /* Global & Navbar */
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .nav-logo { font-size: 18px; }
+    section, #about, #process, #facilities, #contact { padding: 60px 20px; }
+
+    /* Hero Section */
+    #hero { padding-top: 60px; min-height: auto; }
+    .hero-content { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; text-align: center; }
+    .hero-title { font-size: 32px; line-height: 1.2; }
+    .hero-badge { font-size: 10px; margin: 0 auto 20px; }
+    .hero-tagline { font-size: 14px; margin: 20px auto; }
+    .hero-cta { justify-content: center; flex-direction: column; width: 100%; gap: 12px; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 12px; }
+
+    /* Hero Stats */
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+    .stat-card { padding: 16px; }
+    .stat-number { font-size: 24px; }
+    .stat-label { font-size: 11px; }
+
+    /* About Section */
+    .about-inner { grid-template-columns: 1fr; gap: 40px; padding: 0; }
+    .about-visual { height: 300px; display: flex; justify-content: center; align-items: center; }
+    .about-img-main { width: 220px; height: 260px; font-size: 60px; }
+    .about-img-accent { width: 120px; height: 140px; font-size: 40px; }
+    .about-year-badge { left: 50%; transform: translateX(-50%); bottom: -10px; font-size: 18px; padding: 8px 16px; }
+
+    /* Products & Standards (Grid reset ke 1 kolom) */
+    .products-grid, .standards-grid, .fac-grid { grid-template-columns: 1fr; gap: 20px; }
+    .std-card { padding: 24px 15px; }
+
+    /* Process Section (Perbaikan Timeline) */
+    .process-inner { padding: 0; }
+    .steps-timeline { margin-top: 40px; }
+    .steps-timeline::before { left: 25px; }
+    .step { gap: 15px; padding: 20px 0; align-items: flex-start; text-align: left; }
+    .step-num { width: 50px; height: 50px; font-size: 16px; border-width: 1.5px; flex-shrink: 0; }
+    .step-icon { font-size: 14px; margin-bottom: 2px; }
+    .step-body { padding-top: 5px; }
+    .step-title { font-size: 16px; margin-bottom: 4px; line-height: 1.3; }
+    .step-desc { font-size: 13px; line-height: 1.6; }
+
+    /* Facilities Section */
+    .facilities-inner { padding: 0; }
+    .fac-card { padding: 20px; gap: 15px; align-items: center; }
+    .fac-icon { width: 44px; height: 44px; font-size: 20px; }
+    .fac-title { font-size: 15px; }
+
+    /* Contact Section */
+    #contact { padding-bottom: 0; }
+    .contact-inner { padding-bottom: 60px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 30px; }
+    .contact-info { gap: 20px; text-align: left; align-items: flex-start; }
+    .contact-item { width: 100%; gap: 12px; }
+    .contact-icon { width: 36px; height: 36px; font-size: 16px; }
+    .contact-value { font-size: 14px; }
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
+    .form-input { padding: 12px 15px; font-size: 14px; }
+
+    /* Footer & Extras */
+    footer { padding: 30px 20px; flex-direction: column; text-align: center; gap: 24px; }
+    .footer-cert { justify-content: center; flex-wrap: wrap; }
+    .floating-tag { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="progress-bar"></div>
+ 
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">DHK<span> Jaya</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">Tentang Kami</a></li>
+      <li><a href="#products">Produk</a></li>
+      <li><a href="#process">Proses</a></li>
+      <li><a href="#standards">Standar</a></li>
+      <li><a href="#facilities">Fasilitas</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">🐔 Pabrik Pemotongan Ayam</div>
+        <h1 class="hero-title">
+          PT. DHK Jaya
+          <span class="highlight">Manufacturing</span>
+        </h1>
+        <p class="hero-tagline">
+          Produsen daging ayam premium berstandar internasional. Mengutamakan kualitas, higienitas, dan kepercayaan
+          pelanggan sejak hari pertama berdiri.
+        </p>
+        <div class="hero-cta">
+          <a href="#products" class="btn-primary">Lihat Produk Kami</a>
+          <a href="#contact" class="btn-outline">Hubungi Kami</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🐔</div>
+          <div class="stat-number" data-target="50000">0</div>
+          <div class="stat-label">Ekor/Hari Kapasitas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">Tahun Pengalaman</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Sertifikasi Resmi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🚚</div>
+          <div class="stat-number" data-target="200">0</div>
+          <div class="stat-label">Mitra Distribusi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about">
+    <div class="about-inner">
+      <div class="about-visual reveal-left">
+        <div class="about-img-block about-img-main">🏭</div>
+        <div class="about-img-block about-img-accent">🥩</div>
+        <div class="about-year-badge">
+          <small>Berdiri Sejak</small>
+          2014
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">Tentang Kami</div>
+        <div class="divider"></div>
+        <h2 class="section-title">Komitmen Kami terhadap Kualitas & Kehalalan</h2>
+        <p class="section-desc">
+          PT. DHK Jaya Manufacturing adalah perusahaan pemotongan ayam modern yang berkomitmen menghadirkan produk
+          daging ayam segar berkualitas tinggi dengan standar higienitas dan kehalalan terjamin untuk memenuhi kebutuhan
+          pasar lokal maupun ekspor.
+        </p>
+        <ul class="value-list">
+          <li style="animation-delay:.1s">
+            <div class="v-icon">⚡</div>
+            <div>
+              <div class="v-title">Efisiensi Produksi Modern</div>
+              <div class="v-desc">Lini produksi semi-otomatis berdaya tampung tinggi dengan kontrol kualitas di setiap
+                tahap.</div>
+            </div>
+          </li>
+          <li style="animation-delay:.2s">
+            <div class="v-icon">🕌</div>
+            <div>
+              <div class="v-title">Jaminan Halal MUI</div>
+              <div class="v-desc">Proses penyembelihan sesuai syariat Islam, tersertifikasi resmi oleh MUI.</div>
+            </div>
+          </li>
+          <li style="animation-delay:.3s">
+            <div class="v-icon">❄️</div>
+            <div>
+              <div class="v-title">Rantai Dingin Terjaga</div>
+              <div class="v-desc">Cold chain management dari proses hingga distribusi memastikan kesegaran produk.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Lini Produk</div>
+      <div class="divider" style="margin:12px auto 24px"></div>
+      <h2 class="section-title">Produk Unggulan Kami</h2>
+      <p class="section-desc" style="margin:0 auto">Tersedia dalam berbagai kemasan dan spesifikasi sesuai kebutuhan
+        industri, ritel, dan konsumen akhir.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal" style="transition-delay:.1s">
+        <div class="product-img" style="background:linear-gradient(135deg,#C0392B22,#C0392B44)">🐔</div>
+        <div class="product-body">
+          <div class="product-tag">Produk Utama</div>
+          <div class="product-name">Karkas Ayam Segar</div>
+          <div class="product-desc">Karkas ayam broiler utuh segar tanpa jeroan, diproses higienis dan siap distribusi
+            ke pasar tradisional maupun modern.</div>
+          <div class="product-features">
+            <span class="feat-chip">Halal MUI</span>
+            <span class="feat-chip">Fresh / Chilled</span>
+            <span class="feat-chip">Grade A</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:.2s">
+        <div class="product-img" style="background:linear-gradient(135deg,#D4A01722,#D4A01744)">🥩</div>
+        <div class="product-body">
+          <div class="product-tag">Potongan Segar</div>
+          <div class="product-name">Potongan & Bagian Ayam</div>
+          <div class="product-desc">Dada, paha, sayap, dan bagian lainnya tersedia dalam kemasan vacuum sealed atau tray
+            untuk kebutuhan restoran dan hotel.</div>
+          <div class="product-features">
+            <span class="feat-chip">Vacuum Pack</span>
+            <span class="feat-chip">Tray Ready</span>
+            <span class="feat-chip">HoReCa</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:.3s">
+        <div class="product-img" style="background:linear-gradient(135deg,#2980B922,#2980B944)">❄️</div>
+        <div class="product-body">
+          <div class="product-tag">Olahan & Beku</div>
+          <div class="product-name">Ayam Beku (Frozen)</div>
+          <div class="product-desc">Produk ayam beku dengan suhu terkontrol -18°C, cocok untuk distribusi jarak jauh,
+            supermarket, dan industri pengolahan makanan.</div>
+          <div class="product-features">
+            <span class="feat-chip">-18°C IQF</span>
+            <span class="feat-chip">Long Shelf Life</span>
+            <span class="feat-chip">Export Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <div id="process">
+    <div class="process-inner">
+      <div class="reveal">
+        <div class="section-tag">Alur Produksi</div>
+        <div class="divider"></div>
+        <h2 class="section-title">Proses Produksi Berstandar Tinggi</h2>
+        <p class="section-desc">Setiap tahap produksi dirancang untuk memastikan keamanan pangan, higienitas, dan
+          kualitas produk yang konsisten.</p>
+      </div>
+      <div class="steps-timeline">
+        <div class="step reveal" style="transition-delay:.1s">
+          <div class="step-num">
+            <div class="step-icon">🚛</div>01
+          </div>
+          <div class="step-body">
+            <div class="step-title">Penerimaan & Seleksi Ayam Hidup</div>
+            <div class="step-desc">Ayam broiler diterima dari peternak mitra terseleksi, melalui pemeriksaan antemortem
+              oleh dokter hewan berwenang untuk memastikan kesehatan dan kelayakan hewan.</div>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay:.2s">
+          <div class="step-num">
+            <div class="step-icon">✂️</div>02
+          </div>
+          <div class="step-body">
+            <div class="step-title">Penyembelihan Halal & Stunting</div>
+            <div class="step-desc">Proses penyembelihan dilakukan oleh juru sembelih halal bersertifikat, mengikuti tata
+              cara Islam dengan pengawasan MUI. Stunning menggunakan metode yang diizinkan MUI.</div>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay:.3s">
+          <div class="step-num">
+            <div class="step-icon">🔥</div>03
+          </div>
+          <div class="step-body">
+            <div class="step-title">Scalding & Pencabutan Bulu</div>
+            <div class="step-desc">Celupan air panas terkontrol diikuti pencabutan bulu otomatis dengan mesin modern
+              untuk hasil bersih dan efisien.</div>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay:.4s">
+          <div class="step-num">
+            <div class="step-icon">🔬</div>04
+          </div>
+          <div class="step-body">
+            <div class="step-title">Eviscerasi & Inspeksi Postmortem</div>
+            <div class="step-desc">Pengeluaran jeroan dilakukan secara higienis. Inspeksi postmortem oleh petugas
+              terlatih untuk menjamin karkas bebas dari penyakit dan kontaminasi.</div>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay:.5s">
+          <div class="step-num">
+            <div class="step-icon">💧</div>05
+          </div>
+          <div class="step-body">
+            <div class="step-title">Pencucian & Pendinginan (Chilling)</div>
+            <div class="step-desc">Pencucian multi-tahap dengan air bersih mengalir, dilanjutkan proses chilling cepat
+              untuk menurunkan suhu karkas ke bawah 4°C dalam waktu singkat.</div>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay:.6s">
+          <div class="step-num">
+            <div class="step-icon">📦</div>06
+          </div>
+          <div class="step-body">
+            <div class="step-title">Grading, Pengemasan & Distribusi</div>
+            <div class="step-desc">Grading bobot dan kualitas otomatis, pengemasan sesuai spesifikasi pelanggan, dan
+              distribusi melalui armada berpendingin ke seluruh jaringan pemasaran.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STANDARDS -->
+  <section id="standards">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Sertifikasi & Standar</div>
+      <div class="divider" style="margin:12px auto 24px"></div>
+      <h2 class="section-title">Beroperasi dengan Standar Terjamin</h2>
+      <p class="section-desc" style="margin:0 auto">Seluruh operasional kami telah mendapatkan pengakuan resmi dari
+        lembaga nasional dan internasional.</p>
+    </div>
+    <div class="standards-grid">
+      <div class="std-card reveal" style="transition-delay:.1s">
+        <div class="std-badge">🕌</div>
+        <div class="std-name">Halal MUI</div>
+        <div class="std-desc">Sertifikasi Halal dari Majelis Ulama Indonesia untuk seluruh proses produksi.</div>
+      </div>
+      <div class="std-card reveal" style="transition-delay:.2s">
+        <div class="std-badge">🛡️</div>
+        <div class="std-name">NKV (Nomor Kontrol Veteriner)</div>
+        <div class="std-desc">Terdaftar di Kementerian Pertanian RI sebagai rumah potong hewan terstandar.</div>
+      </div>
+      <div class="std-card reveal" style="transition-delay:.3s">
+        <div class="std-badge">🔒</div>
+        <div class="std-name">HACCP</div>
+        <div class="std-desc">Hazard Analysis Critical Control Point — jaminan keamanan pangan di setiap titik kritis
+          produksi.</div>
+      </div>
+      <div class="std-card reveal" style="transition-delay:.4s">
+        <div class="std-badge">⭐</div>
+        <div class="std-name">ISO 22000</div>
+        <div class="std-desc">Sistem Manajemen Keamanan Pangan berstandar internasional ISO 22000:2018.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITIES -->
+  <div id="facilities">
+    <div class="facilities-inner">
+      <div class="reveal">
+        <div class="section-tag">Fasilitas & Infrastruktur</div>
+        <div class="divider"></div>
+        <h2 class="section-title">Infrastruktur Produksi Modern</h2>
+        <p class="section-desc">Didukung oleh fasilitas kelas industri untuk menjamin kapasitas, kualitas, dan efisiensi
+          operasional.</p>
+      </div>
+      <div class="fac-grid">
+        <div class="fac-card reveal" style="transition-delay:.1s">
+          <div class="fac-icon">🏭</div>
+          <div>
+            <div class="fac-title">Lini Produksi Semi-Otomatis</div>
+            <div class="fac-desc">Kapasitas 50.000 ekor per hari dengan peralatan modern berstandar food-grade Eropa,
+              menjamin konsistensi dan efisiensi produksi.</div>
+          </div>
+        </div>
+        <div class="fac-card reveal" style="transition-delay:.2s">
+          <div class="fac-icon">❄️</div>
+          <div>
+            <div class="fac-title">Cold Storage & Cold Room</div>
+            <div class="fac-desc">Kapasitas cold storage 500 ton dengan sistem monitoring suhu real-time 24 jam, menjaga
+              integritas produk segar dan beku.</div>
+          </div>
+        </div>
+        <div class="fac-card reveal" style="transition-delay:.3s">
+          <div class="fac-icon">🚐</div>
+          <div>
+            <div class="fac-title">Armada Kendaraan Pendingin</div>
+            <div class="fac-desc">Lebih dari 30 unit truk berpendingin beroperasi setiap hari untuk mendistribusikan
+              produk ke seluruh wilayah Jawa dan sekitarnya.</div>
+          </div>
+        </div>
+        <div class="fac-card reveal" style="transition-delay:.4s">
+          <div class="fac-icon">🔬</div>
+          <div>
+            <div class="fac-title">Laboratorium QC Internal</div>
+            <div class="fac-desc">Laboratorium pengujian mikrobiologi dan kimia internal untuk kontrol kualitas harian,
+              memastikan keamanan produk sebelum distribusi.</div>
+          </div>
+        </div>
+        <div class="fac-card reveal" style="transition-delay:.5s">
+          <div class="fac-icon">🌊</div>
+          <div>
+            <div class="fac-title">IPAL (Pengolahan Limbah)</div>
+            <div class="fac-desc">Instalasi pengolahan air limbah modern yang ramah lingkungan, memenuhi standar BAKU
+              MUTU lingkungan nasional.</div>
+          </div>
+        </div>
+        <div class="fac-card reveal" style="transition-delay:.6s">
+          <div class="fac-icon">💻</div>
+          <div>
+            <div class="fac-title">Sistem ERP & Traceability</div>
+            <div class="fac-desc">Sistem manajemen produksi terintegrasi dengan traceability lengkap dari hulu ke hilir
+              untuk transparansi dan keamanan pangan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="contact-inner">
+      <div class="reveal" style="text-align:center">
+        <div class="section-tag">Hubungi Kami</div>
+        <div class="divider" style="margin:12px auto 24px"></div>
+        <h2 class="section-title">Jalin Kerjasama dengan Kami</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:8px;">
+            Kami terbuka untuk kerjasama distribusi, pembelian dalam jumlah besar (B2B), serta kemitraan strategis di
+            bidang industri pangan.
+          </p>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Alamat Pabrik</div>
+              <div class="contact-value">Kawasan Industri Pangan, Jawa Barat, Indonesia</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Telepon</div>
+              <div class="contact-value">+62 21 — DHK Jaya</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">info@dhkjaya.co.id</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label">Jam Operasional</div>
+              <div class="contact-value">Senin – Sabtu, 05.00 – 18.00 WIB</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.2s">
+          <div class="contact-form">
+            <div class="form-row">
+              <input type="text" class="form-input" placeholder="Nama Lengkap">
+              <input type="text" class="form-input" placeholder="Perusahaan">
+            </div>
+            <input type="email" class="form-input" placeholder="Alamat Email">
+            <input type="text" class="form-input" placeholder="Nomor Telepon">
+            <textarea class="form-input" placeholder="Pesan atau permintaan Anda..."></textarea>
+            <button class="form-submit">Kirim Pesan →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">DHK <span>Jaya Manufacturing</span></div>
+    <div class="footer-copy">© 2024 PT. DHK Jaya Manufacturing. Seluruh hak dilindungi.</div>
+    <div class="footer-cert">
+      <span class="cert-chip">Halal MUI</span>
+      <span class="cert-chip">NKV</span>
+      <span class="cert-chip">HACCP</span>
+      <span class="cert-chip">ISO 22000</span>
+    </div>
+  </footer>
+
+  <a href="#hero" class="floating-tag" title="Kembali ke atas">↑</a>
+
+  <script>
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+
+    // Counter animation
+    function animateCount(el, target, duration = 1800) {
+      let start = null;
+      const isLarge = target >= 1000;
+      const step = (ts) => {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = isLarge ? current.toLocaleString('id-ID') + '+' : current + (target === 10 ? '+' : '');
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const target = parseInt(e.target.dataset.target);
+          animateCount(e.target, target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: .5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+    // Stagger step animations
+    document.querySelectorAll('.step').forEach((s, i) => {
+      s.style.transitionDelay = (i * .12) + 's';
+    });
+  </script>
+</body>
+
+</html>

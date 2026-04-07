@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Details | IEEE SB UNM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styledet.css">
+</head>
+
+<body>
+
+    <!-- Toast -->
+    <div id="toast">
+        <svg id="toastIcon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"></svg>
+        <span id="toastMsg"></span>
+    </div>
+
+    <!-- ══════ HEADER ══════ -->
+    <div class="header-strip px-5 py-5 sm:px-8 sm:py-7">
+        <div class="max-w-3xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0" class="px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29" stroke-width="2.2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif;font-size:0.68rem;font-weight:700;color:rgba(255,255,255,0.65);letter-spacing:0.05em">IEEE SB UNM</span>
+                </div>
+                <div>
+                    <h1 style="font-family:Syne,sans-serif;font-size:clamp(1rem,4vw,1.4rem);font-weight:800;color:#fff;line-height:1.1">
+                        Program <span style="color:#D91C29">Details</span>
+                    </h1>
+                    <p class="hidden sm:block" style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px">Program Registry · IEEE SB UNM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════ MAIN ══════ -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-8 py-8 space-y-5">
+
+        <!-- Program title card -->
+        <div class="section-card" id="title-card">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                <div style="flex:1;min-width:0">
+                    <p style="font-family:Syne,sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9ca3af;margin-bottom:6px">Work Plan</p>
+                    <h2 id="detail-title" style="font-family:Syne,sans-serif;font-weight:800;font-size:clamp(1.2rem,4vw,1.8rem);color:var(--ink);line-height:1.2">
+                        <div class="skeleton" style="height:28px;width:280px"></div>
+                    </h2>
+                </div>
+                <div id="title-status"></div>
+            </div>
+        </div>
+
+        <!-- Detail grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="detail-grid">
+            <div class="detail-card col-span-2 md:col-span-1"><span class="detail-label">Lead / PIC</span>
+                <div class="skeleton" style="height:14px;width:80px"></div>
+            </div>
+            <div class="detail-card"><span class="detail-label">Event Type</span>
+                <div class="skeleton" style="height:14px;width:70px"></div>
+            </div>
+            <div class="detail-card"><span class="detail-label">Held On</span>
+                <div class="skeleton" style="height:14px;width:60px"></div>
+            </div>
+            <div class="detail-card"><span class="detail-label">Location</span>
+                <div class="skeleton" style="height:14px;width:90px"></div>
+            </div>
+        </div>
+
+        <!-- KPIs + Description -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="detail-bottom">
+            <div class="section-card">
+                <div class="section-header">
+                    <svg width="14" height="14" fill="none" stroke="var(--red)" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    Key Performance Indicators
+                </div>
+                <p id="detail-kpis" style="font-size:0.88rem;color:#374151;font-family:DM Sans,sans-serif;line-height:1.6">
+                    <span class="skeleton" style="height:13px;width:180px;display:block"></span>
+                </p>
+            </div>
+            <div class="section-card">
+                <div class="section-header">
+                    <svg width="14" height="14" fill="none" stroke="var(--red)" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h8" />
+                    </svg>
+                    Description
+                </div>
+                <p id="detail-desc" style="font-size:0.85rem;color:var(--muted);font-family:DM Sans,sans-serif;line-height:1.7;font-style:italic">
+                    <span class="skeleton" style="height:13px;width:220px;display:block;margin-bottom:6px"></span>
+                    <span class="skeleton" style="height:13px;width:160px;display:block"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-between gap-3 pt-1" id="action-bar">
+            <a href="registry.html" style="font-family:DM Sans,sans-serif;font-size:0.8rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:5px;" class="hover:text-red-600 transition-colors">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Kembali ke Registry
+            </a>
+            <button onclick="showEditForm()" class="btn-primary">
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                Edit Program
+            </button>
+        </div>
+    </div>
+
+    <!-- ══════ EDIT MODAL ══════ -->
+    <div id="edit-modal">
+        <div id="edit-modal-box">
+            <!-- Modal header -->
+            <div style="background:var(--ink);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+                <div style="display:flex;align-items:center;gap:10px">
+                    <div style="width:34px;height:34px;background:rgba(217,28,41,0.2);border-radius:9px;display:flex;align-items:center;justify-content:center">
+                        <svg width="16" height="16" fill="none" stroke="#D91C29" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family:Syne,sans-serif;font-weight:700;font-size:0.9rem;color:#fff">Edit Program</p>
+                        <p style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:1px">Perubahan akan disimpan ke Google Sheets</p>
+                    </div>
+                </div>
+                <button onclick="closeEditForm()" style="width:30px;height:30px;background:rgba(255,255,255,0.08);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5)">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <!-- Program Name -->
+                <div style="grid-column:1/-1">
+                    <label class="input-label">Program Name</label>
+                    <input type="text" id="edit-program" class="input-field" placeholder="Nama program" />
+                </div>
+                <!-- PIC -->
+                <div>
+                    <label class="input-label">PIC / Lead</label>
+                    <div class="select-wrap">
+                        <select id="edit-pic" class="input-field cursor-pointer">
+                            <option value="Chair">Chair</option>
+                            <option value="Vice Chair">Vice Chair</option>
+                            <option value="Treasurer">Treasurer</option>
+                            <option value="Secretary">Secretary</option>
+                            <option value="Webmaster">Webmaster</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Event Type -->
+                <div>
+                    <label class="input-label">Event Type</label>
+                    <div class="select-wrap">
+                        <select id="edit-event-type" class="input-field cursor-pointer">
+                            <option value="Social Activity">🤝 Social Activity</option>
+                            <option value="Webinar">🎤 Webinar</option>
+                            <option value="Workshop">🛠️ Workshop</option>
+                            <option value="Techtalks">💻 Techtalks</option>
+                            <option value="Internal">🏢 Internal</option>
+                            <option value="Contest">🏆 Contest</option>
+                            <option value="Festival">🎡 Festival</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Location -->
+                <div>
+                    <label class="input-label">Location</label>
+                    <div class="select-wrap">
+                        <select id="edit-location" class="input-field cursor-pointer">
+                            <option value="Zoom meeting">🎥 Zoom Meeting</option>
+                            <option value="Universitas Nusa Mandiri Kampus Margonda">🏫 UNM Kampus Margonda</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Status -->
+                <div>
+                    <label class="input-label">Status</label>
+                    <div class="select-wrap">
+                        <select id="edit-status" class="input-field cursor-pointer">
+                            <option value="Plan">🔵 Plan</option>
+                            <option value="Pending">🟡 Pending</option>
+                            <option value="Finish">🟢 Finish</option>
+                            <option value="Cancel">🔴 Cancel</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Held On -->
+                <div>
+                    <label class="input-label">Held On (Month)</label>
+                    <div class="select-wrap">
+                        <select id="edit-be-held" class="input-field cursor-pointer">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- KPIs -->
+                <div style="grid-column:1/-1">
+                    <label class="input-label">KPIs</label>
+                    <input type="text" id="edit-kpis" class="input-field" placeholder="e.g. 50 Participants" />
+                </div>
+                <!-- Description -->
+                <div style="grid-column:1/-1">
+                    <label class="input-label">Description</label>
+                    <textarea id="edit-desc" rows="3" class="input-field" placeholder="Program description…"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div style="padding:0 24px 24px;display:flex;gap:10px;justify-content:flex-end">
+                <button onclick="closeEditForm()" class="btn-ghost">
+                    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Batal
+                </button>
+                <button onclick="saveEdit()" id="save-btn" class="btn-save">
+                    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span id="save-text">Simpan Perubahan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-ufUswip-z4c0BNNyo89TQp_-YhtvbGJbVlUyczffzythKyyuncEGsK4cTzx1O6Dl/exec";
+        const urlParams = new URLSearchParams(window.location.search);
+        const programId = urlParams.get('id');
+        let currentItem = null;
+
+        // ── Status badge ──
+        function statusBadge(status) {
+            const s = (status || 'Plan').trim();
+            const map = {
+                'Finish': 'finish',
+                'Plan': 'plan',
+                'Pending': 'pending',
+                'Cancel': 'cancel'
+            };
+            const cls = map[s] || 'plan';
+            return `<span class="badge badge-${cls}"><span class="badge-dot"></span>${s}</span>`;
+        }
+
+        // ── Load detail ──
+        async function loadDetail() {
+            try {
+                const res = await fetch(SCRIPT_URL);
+                const data = await res.json();
+                const item = data.find(p => p.id.toString() === programId);
+
+                if (!item) {
+                    document.getElementById('detail-title').innerHTML = '<span style="color:#ef4444">Program not found</span>';
+                    return;
+                }
+                currentItem = item;
+
+                // Title
+                document.getElementById('detail-title').textContent = item.work_plan || 'Untitled';
+                document.getElementById('title-status').innerHTML = statusBadge(item.status);
+
+                // Grid
+                document.getElementById('detail-grid').innerHTML = `
+        <div class="detail-card">
+          <span class="detail-label">Lead / PIC</span>
+          <span class="detail-value" style="font-weight:600">${item.lead || '—'}</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Event Type</span>
+          <span class="detail-value">${item.event_type || '—'}</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Held On</span>
+          <span class="detail-value">${item.held_on || '—'}</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Location</span>
+          <span class="detail-value" style="font-size:0.82rem">${item.location || '—'}</span>
+        </div>
+      `;
+
+                // KPIs + desc
+                document.getElementById('detail-kpis').textContent = item.kpis || '—';
+                document.getElementById('detail-desc').textContent = item.description || 'No description provided.';
+                document.getElementById('detail-desc').style.fontStyle = item.description ? 'normal' : 'italic';
+
+            } catch (e) {
+                document.getElementById('detail-title').innerHTML = '<span style="color:#ef4444">Error fetching data</span>';
+            }
+        }
+
+        // ── Edit modal ──
+        function showEditForm() {
+            if (!currentItem) return;
+            document.getElementById('edit-program').value = currentItem.work_plan || '';
+            document.getElementById('edit-pic').value = currentItem.lead || 'Chair';
+            document.getElementById('edit-event-type').value = currentItem.event_type || 'Webinar';
+            document.getElementById('edit-location').value = currentItem.location?.includes('Nusa Mandiri') ? 'Universitas Nusa Mandiri Kampus Margonda' : 'Zoom meeting';
+            document.getElementById('edit-status').value = currentItem.status || 'Plan';
+            document.getElementById('edit-be-held').value = currentItem.held_on || 'January';
+            document.getElementById('edit-kpis').value = currentItem.kpis || '';
+            document.getElementById('edit-desc').value = currentItem.description || '';
+            document.getElementById('edit-modal').classList.add('open');
+        }
+
+        function closeEditForm() {
+            document.getElementById('edit-modal').classList.remove('open');
+        }
+        document.getElementById('edit-modal').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closeEditForm();
+        });
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeEditForm();
+        });
+
+        // ── Save edit ──
+        async function saveEdit() {
+            const btn = document.getElementById('save-btn');
+            const text = document.getElementById('save-text');
+            btn.disabled = true;
+            text.textContent = 'Menyimpan…';
+
+            const updatedData = {
+                action: 'update',
+                id: currentItem.id,
+                work_plan: document.getElementById('edit-program').value,
+                lead: document.getElementById('edit-pic').value,
+                event_type: document.getElementById('edit-event-type').value,
+                location: document.getElementById('edit-location').value,
+                status: document.getElementById('edit-status').value,
+                held_on: document.getElementById('edit-be-held').value,
+                kpis: document.getElementById('edit-kpis').value,
+                description: document.getElementById('edit-desc').value,
+            };
+
+            try {
+                const res = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(updatedData)
+                });
+                const result = await res.json();
+                if (result.status === 'updated') {
+                    closeEditForm();
+                    showToast('Perubahan berhasil disimpan!', 'success');
+                    setTimeout(() => location.reload(), 1200);
+                } else {
+                    showToast('Gagal menyimpan perubahan', 'error');
+                    btn.disabled = false;
+                    text.textContent = 'Simpan Perubahan';
+                }
+            } catch (err) {
+                showToast('Error koneksi server', 'error');
+                btn.disabled = false;
+                text.textContent = 'Simpan Perubahan';
+            }
+        }
+
+        // ── Toast ──
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'show ' + type;
+            icon.innerHTML = type === 'success' ?
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' :
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+            setTimeout(() => {
+                t.className = '';
+            }, 3500);
+        }
+
+        loadDetail();
+    </script>
+</body>
+
+</html>

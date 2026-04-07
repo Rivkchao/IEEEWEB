@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surat Generator | IEEE SB UNM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylesurat.css">
+</head>
+
+<body>
+
+    <!-- Toast -->
+    <div id="toast">
+        <svg id="toastIcon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+            viewBox="0 0 24 24"></svg>
+        <span id="toastMsg"></span>
+    </div>
+
+    <!-- ══════ HEADER ══════ -->
+    <nav class="header-strip px-5 py-5 sm:px-8 sm:py-7 z-[100] relative">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+
+            <div class="flex items-center gap-3">
+                <div class="ieee-pill px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg class="hidden sm:block" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29"
+                        stroke-width="2.2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                    <span class="pill-text text-center">IEEE SB UNM</span>
+                </div>
+                <div>
+                    <h1 class="header-title">SURAT <span style="color:#D91C29">Generate</span></h1>
+                    <p class="header-subtitle hidden sm:block">IEEE Student Branch Universitas Nusa Mandiri</p>
+                </div>
+            </div>
+
+            <div id="menu"
+                class="hidden sm:flex flex-col sm:flex-row absolute sm:static top-full left-0 w-full sm:w-auto bg-[#0f172a] sm:bg-transparent px-6 sm:px-0 py-6 sm:py-0 gap-5 text-sm font-semibold text-white shadow-xl sm:shadow-none">
+                <div class="relative group">
+                    <button onclick="toggleDropdown('wp')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        Workplan <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="dropdown-wp"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="../workplan/registry.html" class="block px-4 py-2 hover:bg-gray-100">Data
+                                Workplan</a>
+                            <a href="../workplan/registry-form.html" class="block px-4 py-2 hover:bg-gray-100">Form
+                                Data</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button onclick="toggleDropdown('lt')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        Letter <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="dropdown-lt"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="surat.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Surat</a>
+                            <a href="generate-tor.html" class="block px-4 py-2 hover:bg-gray-100">TOR</a>
+                            <a href="tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">Arsip
+                                TOR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="menuBtn" class="sm:hidden text-white p-2 hover:bg-white/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ══════ MAIN ══════ -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-6">
+
+        <!-- Form card -->
+        <div class="section-card" style="animation-delay:0ms">
+            <div class="section-header">
+                <div class="step-num">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                Buat Surat Pengajuan
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Left col -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Tempat</label>
+                        <input type="text" id="tempat" placeholder="e.g. Jakarta" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Tanggal</label>
+                        <input type="text" id="tgl" class="input-field" />
+                    </div>
+                </div>
+
+                <!-- Right col -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="input-label">Perihal Surat</label>
+                        <input type="text" id="perihal" placeholder="Perihal / Subject" class="input-field" />
+                    </div>
+                    <div>
+                        <label class="input-label">Kepada Yth.</label>
+                        <input type="text" id="kepada" placeholder="Kepada Yth..." class="input-field" />
+                    </div>
+                </div>
+
+                <!-- Full width -->
+                <div class="md:col-span-2">
+                    <label class="input-label">Isi Surat</label>
+                    <textarea id="isi" rows="4" placeholder="Tulis isi surat pengajuan di sini…"
+                        class="input-field"></textarea>
+                </div>
+            </div>
+
+            <button onclick="generateWord()" id="btnGenerate" class="btn-generate">
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span id="btnText">Generate Letter</span>
+            </button>
+        </div>
+
+        <!-- History card -->
+        <div class="section-card" style="animation-delay:80ms">
+            <!-- Card top bar -->
+            <div
+                style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                <svg width="14" height="14" fill="none" stroke="var(--red)" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Riwayat
+                    Surat</span>
+                <span id="countBadge" class="count-badge" style="opacity:0">0</span>
+                <div style="flex:1"></div>
+                <div style="display:flex;align-items:center;gap:6px">
+                    <div class="dot-live" style="width:7px;height:7px;background:#22c55e;border-radius:50%"></div>
+                    <span style="font-size:0.65rem;font-family:DM Sans,sans-serif;color:#9ca3af">Live sync</span>
+                </div>
+            </div>
+
+            <div style="margin:0 -24px;overflow-x:auto">
+                <table class="srt-table w-full text-left border-collapse" style="min-width:480px">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nomor & Perihal</th>
+                            <th>Tujuan</th>
+                            <th style="text-align:right">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <tr class="srt-row">
+                            <td>
+                                <div class="skeleton" style="width:20px;height:13px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:160px;height:13px;margin-bottom:5px"></div>
+                                <div class="skeleton" style="width:100px;height:10px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:120px;height:13px"></div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr class="srt-row">
+                            <td>
+                                <div class="skeleton" style="width:20px;height:13px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:140px;height:13px;margin-bottom:5px"></div>
+                                <div class="skeleton" style="width:90px;height:10px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:100px;height:13px"></div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr class="srt-row">
+                            <td>
+                                <div class="skeleton" style="width:20px;height:13px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:180px;height:13px;margin-bottom:5px"></div>
+                                <div class="skeleton" style="width:110px;height:10px"></div>
+                            </td>
+                            <td>
+                                <div class="skeleton" style="width:130px;height:13px"></div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p style="font-size:0.7rem;color:#bbb;text-align:center;font-family:DM Sans,sans-serif">
+            Dokumen tersimpan otomatis ke Google Drive · IEEE Student Branch Universitas Nusa Mandiri
+        </p>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRMNWfHAOSdYX0ojhEgMdNbOtC1XcpqRftssutcy9N7XLyx7xjzLbQXB54E4q3B6cBuA/exec";
+
+        // ── NAVIGASI & MOBILE MENU ──
+        function initNavigation() {
+            const menuBtn = document.getElementById('menuBtn');
+            const menu = document.getElementById('menu');
+
+            // Toggle Mobile Menu (Hamburger)
+            if (menuBtn && menu) {
+                menuBtn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+
+            // Fungsi Dropdown Klik untuk Mobile
+            window.toggleDropdown = function (id) {
+                // Hanya jalan di layar kecil (mobile)
+                if (window.innerWidth < 640) {
+                    const dropdown = document.getElementById('dropdown-' + id);
+                    dropdown.classList.toggle('hidden');
+                }
+            };
+        }
+
+        // ── TOAST NOTIFICATION ──
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'show ' + type;
+            icon.innerHTML = type === 'success' ?
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' :
+                '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+            setTimeout(() => { t.className = ''; }, 4000);
+        }
+
+        // ── TABLE & BADGE BUILDER ──
+        let rowCount = 0;
+        function buildRow(nomor, perihal, tujuan, url, isNew = false) {
+            rowCount++;
+            return `
+        <tr class="srt-row${isNew ? ' row-new' : ''}">
+            <td>
+                <div style="width:26px;height:26px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:Syne,sans-serif;font-size:0.62rem;font-weight:700;color:var(--muted);background:#fff">${rowCount}</div>
+            </td>
+            <td>
+                <div style="font-family:Syne,sans-serif;font-weight:700;font-size:0.85rem;color:var(--ink)">${nomor}</div>
+                <div style="font-size:0.68rem;color:#bbb;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">${perihal}</div>
+            </td>
+            <td style="font-size:0.85rem;color:var(--muted)">${tujuan || '—'}</td>
+            <td style="text-align:right">
+                <a href="${url}" target="_blank" class="btn-preview">
+                    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    Preview
+                </a>
+            </td>
+        </tr>`;
+        }
+
+        function updateCountBadge(n) {
+            const badge = document.getElementById('countBadge');
+            if (badge) {
+                badge.textContent = n;
+                badge.style.opacity = n > 0 ? '1' : '0';
+            }
+        }
+
+        // ── CORE FUNCTIONS (Generate & Load) ──
+        async function generateWord() {
+            const btn = document.getElementById('btnGenerate');
+            const btnText = document.getElementById('btnText');
+            btn.disabled = true;
+            btnText.textContent = 'Memproses…';
+
+            const payload = {
+                tempat: document.getElementById('tempat').value,
+                tgl: document.getElementById('tgl').value,
+                kepada: document.getElementById('kepada').value,
+                perihal: document.getElementById('perihal').value,
+                isi_surat: document.getElementById('isi').value,
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+
+                if (res.status === 'success') {
+                    const tbody = document.getElementById('historyBody');
+                    tbody.insertAdjacentHTML('afterbegin', buildRow(res.nomor, payload.perihal, payload.kepada, res.url, true));
+                    updateCountBadge(tbody.querySelectorAll('tr').length);
+                    showToast(`Surat berhasil dibuat! No. ${res.nomor}`, 'success');
+                    ['perihal', 'kepada', 'isi'].forEach(id => document.getElementById(id).value = '');
+                } else {
+                    showToast('Gagal: ' + (res.message || 'Unknown error'), 'error');
+                }
+            } catch (e) {
+                showToast('Gagal koneksi — pastikan deployment diset ke Anyone', 'error');
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = 'Generate Letter';
+            }
+        }
+
+        async function loadHistoryFromDrive() {
+            const tbody = document.getElementById('historyBody');
+            if (!tbody) return;
+
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const files = await response.json();
+                tbody.innerHTML = '';
+                rowCount = 0;
+
+                if (!files.length) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="padding:48px 24px;text-align:center">
+                <div style="font-size:1.4rem;margin-bottom:10px">📄</div>
+                <p style="font-family:Syne,sans-serif;font-weight:700;color:#374151;margin-bottom:4px">Belum ada surat</p>
+                <p style="font-size:0.8rem;color:#9ca3af">Buat surat pertama di atas</p>
+            </td></tr>`;
+                    return;
+                }
+
+                files.forEach(file => {
+                    tbody.insertAdjacentHTML('beforeend', buildRow(file.nomor, file.perihal, file.tujuan, file.url));
+                });
+                updateCountBadge(files.length);
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="4" style="padding:48px 24px;text-align:center">
+            <div style="font-size:1.4rem;margin-bottom:10px">⚠️</div>
+            <p style="font-family:Syne,sans-serif;font-weight:700;color:#374151;margin-bottom:4px">Gagal memuat riwayat</p>
+            <button onclick="loadHistoryFromDrive()" style="padding:8px 20px;background:var(--red);color:#fff;border:none;border-radius:10px;font-family:Syne,sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer">Coba Lagi</button>
+        </td></tr>`;
+            }
+        }
+
+        function setAutoDate() {
+            const tglInput = document.getElementById('tgl');
+            if (!tglInput) return;
+
+            const date = new Date();
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            tglInput.value = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        // ── INITIALIZE ON LOAD ──
+        window.addEventListener('load', () => {
+            initNavigation();
+            setAutoDate();
+            loadHistoryFromDrive();
+        });
+    </script>
+</body>
+
+</html>
