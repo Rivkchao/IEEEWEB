@@ -43,7 +43,7 @@
 
             <div id="menu"
                 class="hidden sm:flex flex-col sm:flex-row absolute sm:static top-full left-0 w-full sm:w-auto bg-[#0f172a] sm:bg-transparent px-6 sm:px-0 py-6 sm:py-0 gap-5 text-sm font-semibold text-white shadow-xl sm:shadow-none">
-                <div class="relative group">
+                <div class="relative group" style="display: none;">
                     <button onclick="toggleDropdown('wp')"
                         class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
                         Workplan <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,17 +63,26 @@
                 <div class="relative group">
                     <button onclick="toggleDropdown('lt')"
                         class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
-                        Letter <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h16v12H4z" />
+                                <path d="M4 6l8 6 8-6" />
+                            </svg>
+                            <span>Letter</span>
+                        </div>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
+
                     <div id="dropdown-lt"
                         class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
                         <div class="bg-white text-black rounded-xl shadow-lg py-2">
-                            <a href="/letter/surat.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Surat</a>
+                            <a href="/letter/surat.html" class="block px-4 py-2 hover:bg-gray-100">Surat</a>
                             <a href="/letter/generate-tor.html" class="block px-4 py-2 hover:bg-gray-100">TOR</a>
-                            <a href="/letter/tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">Arsip
-                                TOR</a>
+                            <a href="/letter/tor.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100 font-bold">
+                                Arsip TOR
+                            </a>
                         </div>
                     </div>
                 </div>
