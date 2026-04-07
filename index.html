@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        ink: '#0a0a0f',
+                        'ink-soft': '#12121a',
+                        'ink-muted': '#1c1c28',
+                        'line': '#2a2a3a',
+                        'accent': '#5b8dee',
+                        'accent-dim': '#3a5bb0',
+                        'glow': '#7eb3ff',
+                        'text-primary': '#e8eaf6',
+                        'text-muted': '#7b7fa3',
+                        'text-faint': '#3d4060',
+                    },
+                    keyframes: {
+                        'fade-up': {
+                            '0%': { opacity: '0', transform: 'translateY(24px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'scan': {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(400%)' },
+                        },
+                    },
+                    animation: {
+                        'fade-up': 'fade-up 0.6s cubic-bezier(0.22,1,0.36,1) both',
+                        'scan': 'scan 3s ease-in-out infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+        }
+
+        .card-glow::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(91, 141, 238, 0.4) 0%, transparent 50%, rgba(91, 141, 238, 0.1) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-glow:hover::before {
+            opacity: 1;
+        }
+
+        .card-glow:hover .card-scan {
+            opacity: 1;
+        }
+
+        .card-scan {
+            position: absolute;
+            height: 40%;
+            background: linear-gradient(to bottom, transparent, rgba(91, 141, 238, 0.04), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: scan 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(91, 141, 238, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(91, 141, 238, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        .tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        [style*="animation-delay"] {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-text-primary font-display grid-bg noise-bg overflow-x-hidden">
+
+    <!-- Ambient orb -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-[0.07] pointer-events-none"
+        style="background: radial-gradient(ellipse at center, #5b8dee 0%, transparent 70%);"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+
+        <!-- Header -->
+        <header class="mb-20 animate-fade-up" style="animation-delay: 0s;">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                <span class="tag text-text-muted tracking-widest">IEEE SB UNM v2.4.1 — Online</span>
+            </div>
+            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-text-primary leading-none mb-4">
+                Navigator
+                <span class="text-accent">.</span>
+            </h1>
+            <p class="text-text-muted font-mono text-sm max-w-md leading-relaxed">
+                A centralized access layer for internal tools.
+            </p>
+        </header>
+
+        <!-- Section label -->
+        <div class="flex items-center gap-4 mb-8 animate-fade-up" style="animation-delay: 0.1s;">
+            <span class="tag text-text-faint">// modules</span>
+            <div class="flex-1 h-px bg-line"></div>
+            <span class="tag text-text-faint">03 entries</span>
+        </div>
+
+        <!-- Card Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <!-- Card 1 -->
+            <a href="/ieeeweb.rivkyps.my.id/letter/surat.html"
+                class="card-glow group relative bg-ink-soft rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:bg-ink-muted hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(91,141,238,0.15)] animate-fade-up"
+                style="animation-delay: 0.15s;">
+                <div class="card-scan"></div>
+                <div class="flex items-start justify-between mb-10">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center border border-line group-hover:border-accent/30 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <svg class="w-4 h-4 text-text-faint group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="tag text-text-faint block mb-2">01 — Letter</span>
+                    <h2
+                        class="text-lg font-bold text-text-primary mb-2 group-hover:text-glow transition-colors duration-300">
+                        Letter</h2>
+                    <p class="text-text-muted text-sm leading-relaxed font-mono">Real-time metrics, system health, and
+                        operational snapshots.</p>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="/ieeeweb.rivkyps.my.id/letter/tor.html"
+                class="card-glow group relative bg-ink-soft rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:bg-ink-muted hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(91,141,238,0.15)] animate-fade-up"
+                style="animation-delay: 0.2s;">
+                <div class="card-scan"></div>
+                <div class="flex items-start justify-between mb-10">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center border border-line group-hover:border-accent/30 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <svg class="w-4 h-4 text-text-faint group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="tag text-text-faint block mb-2">02 — TOR</span>
+                    <h2
+                        class="text-lg font-bold text-text-primary mb-2 group-hover:text-glow transition-colors duration-300">
+                        TOR</h2>
+                    <p class="text-text-muted text-sm leading-relaxed font-mono">Deep-dive reports, trend analysis, and
+                        data visualization.</p>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="/ieeeweb.rivkyps.my.id/workplan/registry.html"
+                class="card-glow group relative bg-ink-soft rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:bg-ink-muted hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(91,141,238,0.15)] animate-fade-up"
+                style="animation-delay: 0.25s;">
+                <div class="card-scan"></div>
+                <div class="flex items-start justify-between mb-10">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center border border-line group-hover:border-accent/30 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM9 16l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <svg class="w-4 h-4 text-text-faint group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="tag text-text-faint block mb-2">03 — Workplan</span>
+                    <h2
+                        class="text-lg font-bold text-text-primary mb-2 group-hover:text-glow transition-colors duration-300">
+                        Work Plan</h2>
+                    <p class="text-text-muted text-sm leading-relaxed font-mono">Endpoints, schemas, authentication, and
+                        integration guides.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 flex items-center justify-between animate-fade-up" style="animation-delay: 0.45s;">
+            <span class="tag text-text-faint">IEEE SB UNM © 2026</span>
+            <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span class="tag text-text-faint">All systems operational</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Trigger fade-up animations sequentially on load
+        document.querySelectorAll('[style*="animation-delay"]').forEach(el => {
+            const delay = parseFloat(el.style.animationDelay || '0');
+            setTimeout(() => {
+                el.style.opacity = '';
+                el.classList.add('animate-fade-up');
+            }, delay * 1000);
+        });
+    </script>
+</body>
+
+</html>
