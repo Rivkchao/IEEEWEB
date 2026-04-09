@@ -18,19 +18,20 @@
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
 
             <div class="flex items-center gap-3">
-                <div class="ieee-pill px-3 py-1.5 rounded-lg flex items-center gap-2">
-                    <svg class="hidden sm:block" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29"
-                        stroke-width="2.2">
+                <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12)"
+                    class="px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29" stroke-width="2.2"
+                        class="hidden md:block">
                         <circle cx="12" cy="12" r="3" />
                         <path
                             d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
                     </svg>
-                    <span class="pill-text text-center">IEEE SB UNM</span>
+                    <span style="font-family:Syne,sans-serif; font-size:0.68rem; font-weight:700"
+                        class="text-center">IEEE SB UNM</span>
                 </div>
-                <div>
-                    <h1 class="header-title">TOR <span style="color:#D91C29">Generate</span></h1>
-                    <p class="header-subtitle hidden sm:block">IEEE Student Branch Universitas Nusa Mandiri</p>
-                </div>
+                <h1 style="font-family:Syne,sans-serif; font-size:1.2rem; font-weight:800">
+                    TOR <span style="color:#D91C29">Generate</span>
+                </h1>
             </div>
 
             <div id="menu"
@@ -72,8 +73,9 @@
                         <div class="bg-white text-black rounded-xl shadow-lg py-2">
                             <a href="/letter/lpj.html" class="block px-4 py-2 hover:bg-gray-100">LPJ</a>
                             <a href="/letter/surat.html" class="block px-4 py-2 hover:bg-gray-100">Surat</a>
-                            <a href="/letter/generate-tor.html" class="block px-4 py-2 hover:bg-gray-100">TOR</a>
-                            <a href="/letter/tor.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100 font-bold">
+                            <a href="/letter/generate-tor.html"
+                                class="block px-4 py-2 text-red-600  hover:bg-gray-100">TOR</a>
+                            <a href="/letter/tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">
                                 Arsip TOR
                             </a>
                         </div>
@@ -95,9 +97,16 @@
         <form id="torForm" class="space-y-6">
 
             <div class="section-card" style="animation-delay:0ms">
-                <div class="section-header">
-                    <div class="step-num">1</div>
-                    Identitas Utama & Header
+                <div
+                    style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <span
+                        style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Identitas
+                        Utama & Header</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     <div class="lg:col-span-2">
@@ -127,8 +136,16 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="section-card" style="animation-delay:100ms">
-                    <div class="section-header">
-                        <div class="step-num">2</div>Latar Belakang & Deskripsi
+                    <div
+                        style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span
+                            style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Latar
+                            Belakang & Deskripsi</span>
                     </div>
                     <div class="space-y-5">
                         <div>
@@ -145,26 +162,43 @@
                 </div>
                 <div class="section-card" style="animation-delay:200ms">
                     <div class="section-header">
-                        <div class="step-num">3</div>Tujuan & Output
-                    </div>
-                    <div class="space-y-5">
-                        <div>
-                            <label class="input-label">Tujuan Kegiatan</label>
-                            <textarea name="tujuankegiatan" rows="4" class="input-field"
-                                placeholder="Apa yang ingin dicapai?"></textarea>
+                        <div
+                            style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            <span
+                                style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Tujuan
+                                & Output</span>
                         </div>
-                        <div>
-                            <label class="input-label">Output Kegiatan</label>
-                            <textarea name="outputkegiatan" rows="4" class="input-field"
-                                placeholder="Hasil nyata dari kegiatan ini..."></textarea>
+                        <div class="space-y-5">
+                            <div>
+                                <label class="input-label">Tujuan Kegiatan</label>
+                                <textarea name="tujuankegiatan" rows="4" class="input-field"
+                                    placeholder="Apa yang ingin dicapai?"></textarea>
+                            </div>
+                            <div>
+                                <label class="input-label">Output Kegiatan</label>
+                                <textarea name="outputkegiatan" rows="4" class="input-field"
+                                    placeholder="Hasil nyata dari kegiatan ini..."></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="section-card" style="animation-delay:300ms">
-                <div class="section-header">
-                    <div class="step-num">4</div>Detail Pelaksanaan
+                <div
+                    style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Detail
+                        Pelaksanaan</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
                     <div class="lg:col-span-2">
@@ -196,10 +230,18 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="section-card" style="animation-delay:400ms">
-                    <div class="section-header">
-                        <div class="step-num">5</div>Timeline
+                    <div
+                        style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span
+                            style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Timeline
+                            Kegiatan</span>
                     </div>
-                    <div class="space-y-3">
+                    <div class="space-y-3 mt-2">
                         <div class="flex items-center gap-3">
                             <span class="text-[0.65rem] font-bold text-stone-300 w-4">1</span>
                             <input type="text" name="timeline1" placeholder="Tanggal Kegiatan"
@@ -230,9 +272,19 @@
 
                 <div class="section-card lg:col-span-2" style="animation-delay:500ms">
                     <div class="section-header">
-                        <div class="step-num">6</div>Susunan Acara
+                        <div
+                            style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            <span
+                                style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Susunan
+                                Acara</span>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 mt-2">
                         <div class="flex flex-col gap-2">
                             <div class="flex items-center gap-3">
                                 <input type="text" name="sa1" placeholder="08:00"
@@ -307,20 +359,28 @@
             </div>
 
             <div class="section-card" style="animation-delay:600ms">
-                <div class="section-header justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <div class="step-num">7</div>Susunan Kepanitiaan
+                <div class="flex items-center justify-between"
+                    style="margin:-24px -24px 20px -24px; border-bottom:1px solid var(--border); padding-right:20px">
+                    <div style="padding:14px 20px; display:flex; align-items:center; gap:8px">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span
+                            style="font-family:Syne,sans-serif; font-size:0.75rem; font-weight:700; color:white">Susunan
+                            Kepanitiaan</span>
                     </div>
+
                     <button type="button" onclick="addPanitia()"
-                        class="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl text-[0.65rem] font-extrabold uppercase tracking-wider transition-all">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"
+                        class="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg text-[0.6rem] font-extrabold uppercase tracking-wider transition-all">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"
                             viewBox="0 0 24 24">
                             <path d="M12 5v14M5 12h14" />
                         </svg>
                         Tambah Panitia
                     </button>
                 </div>
-
                 <div id="panitia-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
                     <div class="panitia-row group">
                         <div class="relative">
@@ -351,9 +411,17 @@
             </div>
 
             <div class="section-card" style="animation-delay:700ms">
-                <div class="section-header">
-                    <div class="step-num">8</div>Teknis Kegiatan
+                <div
+                    style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Teknis
+                        Kegiatan</span>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="input-label">Bentuk & Waktu Pelaksanaan</label>
@@ -385,25 +453,43 @@
 
             <div class="section-card" style="animation-delay:800ms">
                 <div class="section-header">
-                    <div class="step-num">9</div>Harapan & Penutup
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="input-label">Benefit Kegiatan (e.g. Skill, Network)</label>
-                        <textarea name="penutupbenefit" rows="3" class="input-field"
-                            placeholder="Diharapkan melalui kegiatan ini, peserta mendapatkan..."></textarea>
+                    <div
+                        style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span
+                            style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Harapan
+                            & Penutup</span>
                     </div>
-                    <div>
-                        <label class="input-label">Manfaat Kegiatan (e.g. Output jangka panjang)</label>
-                        <textarea name="penutupmanfaat" rows="3" class="input-field"
-                            placeholder="Kegiatan ini diharapkan mampu meningkatkan..."></textarea>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="input-label">Benefit Kegiatan (e.g. Skill, Network)</label>
+                            <textarea name="penutupbenefit" rows="3" class="input-field"
+                                placeholder="Diharapkan melalui kegiatan ini, peserta mendapatkan..."></textarea>
+                        </div>
+                        <div>
+                            <label class="input-label">Manfaat Kegiatan (e.g. Output jangka panjang)</label>
+                            <textarea name="penutupmanfaat" rows="3" class="input-field"
+                                placeholder="Kegiatan ini diharapkan mampu meningkatkan..."></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="section-card" style="animation-delay:350ms">
-                <div class="section-header">
-                    <div class="step-num">10</div>Detail Substansi & Sasaran
+                <div
+                    style="margin:-24px -24px 0 -24px;padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;margin-bottom:0">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif;font-size:0.75rem;font-weight:700;color:var(--ink)">Detail
+                        Substansi & Sasaran</span>
                 </div>
                 <div class="space-y-4">
                     <div>
@@ -427,8 +513,8 @@
 
             </div>
 
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-6 pt-6 border-t border-stone-200">
-                <button type="submit" id="submitBtn" class="btn-submit">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6 ">
+                <button type="submit" id="submitBtn" class="btn-generate">
                     <span id="submitText">Generate Document</span>
                     <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
