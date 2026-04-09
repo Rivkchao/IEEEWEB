@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LPJ Tracker | IEEE SB UNM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylelpj.css">
+</head>
+
+<body>
+
+    <div id="toast"><span id="toastMsg"></span></div>
+
+    <nav class="header-strip px-5 py-5 sm:px-8 sm:py-7 z-[100] relative">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+
+            <div class="flex items-center gap-3">
+                <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12)"
+                    class="px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29" stroke-width="2.2"
+                        class="hidden md:block">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                    <span style="font-family:Syne,sans-serif; font-size:0.68rem; font-weight:700"
+                        class="text-center">IEEE SB UNM</span>
+                </div>
+                <h1 style="font-family:Syne,sans-serif; font-size:1.2rem; font-weight:800">
+                    LPJ <span style="color:#D91C29">Tracker</span>
+                </h1>
+            </div>
+
+            <div id="menu"
+                class="hidden sm:flex flex-col sm:flex-row absolute sm:static top-full left-0 w-full sm:w-auto bg-[#0f172a] sm:bg-transparent px-6 sm:px-0 py-6 sm:py-0 gap-5 text-sm font-semibold text-white shadow-xl sm:shadow-none">
+                <div class="relative group" style="display: none;">
+                    <button onclick="toggleDropdown('wp')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        Workplan <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="dropdown-wp"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="/workplan/registry.html" class="block px-4 py-2 hover:bg-gray-100">Data
+                                Workplan</a>
+                            <a href="/workplan/registry-form.html" class="block px-4 py-2 hover:bg-gray-100">Form
+                                Data</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button onclick="toggleDropdown('lt')"
+                        class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h16v12H4z" />
+                                <path d="M4 6l8 6 8-6" />
+                            </svg>
+                            <span>Letter</span>
+                        </div>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <div id="dropdown-lt"
+                        class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
+                        <div class="bg-white text-black rounded-xl shadow-lg py-2">
+                            <a href="/letter/lpj.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">LPJ</a>
+                            <a href="/letter/surat.html" class="block px-4 py-2 hover:bg-gray-100">Surat</a>
+                            <a href="/letter/generate-tor.html" class="block px-4 py-2 hover:bg-gray-100">TOR</a>
+                            <a href="/letter/tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">
+                                Arsip TOR
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="menuBtn" class="sm:hidden text-white p-2 hover:bg-white/10 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-10">
+        <div class="section-card">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-500">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <h2 style="font-family:Syne,sans-serif; font-weight:700; font-size:1.1rem">Catat Laporan
+                        Pertanggungjawaban</h2>
+                    <p style="font-size:0.75rem; color:#9ca3af">Data akan otomatis masuk ke Google Sheets sesuai posisi
+                    </p>
+                </div>
+            </div>
+
+            <form id="lpjForm" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="input-label block mb-2 text-sm font-medium text-gray-200">
+                            Posisi / Divisi
+                        </label>
+                        <select id="posisi" class="input-field appearance-none" required>
+                            <option value="" disabled selected class="bg-gray-800 text-gray-400">
+                                Pilih Posisi...
+                            </option>
+                            <option class="bg-gray-800 text-white">Chair</option>
+                            <option class="bg-gray-800 text-white">Vice Chair</option>
+                            <option class="bg-gray-800 text-white">Secretary</option>
+                            <option class="bg-gray-800 text-white">Treasury</option>
+                            <option class="bg-gray-800 text-white">Webmaster</option>
+                            <option class="bg-gray-800 text-white">Creative Design</option>
+                            <option class="bg-gray-800 text-white">Creative Video</option>
+                            <option class="bg-gray-800 text-white">Administrative & Documentation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="input-label">Tanggal Pelaksanaan</label>
+                        <input type="date" id="tanggal" class="input-field" required />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="input-label">Nama Program Kerja</label>
+                    <input type="text" id="proker" placeholder="Contoh: IEEE Tech Webinar 2026" class="input-field"
+                        required />
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="input-label">Anggaran Terpakai (Rp)</label>
+                        <input type="number" id="anggaran" placeholder="Contoh: 500000" class="input-field" required />
+                    </div>
+                    <div>
+                        <label class="input-label">Link Dokumen LPJ (Drive)</label>
+                        <input type="url" id="link" placeholder="https://drive.google.com/..." class="input-field"
+                            required />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="input-label">Kendala / Evaluasi Singkat</label>
+                    <textarea id="catatan" rows="3" placeholder="Tulis kendala atau catatan selama proker berjalan..."
+                        class="input-field"></textarea>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="btn-submit">
+                    <span id="btnText">Simpan Laporan</span>
+                </button>
+            </form>
+        </div>
+
+        <p class="mt-8 text-center text-[0.7rem] text-gray-500 uppercase tracking-widest font-bold">
+            IEEE Student Branch Universitas Nusa Mandiri
+        </p>
+    </main>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqJKz39fs_VDRn7jRCuIky6UBb3A8r8dMtXf897QvFQb2BRjxgLvJI71pX4UBPIXVMAA/exec";
+
+        // ── Mobile Menu ──
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+        menuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        // ── Toast ──
+        function showToast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'show ' + type;
+            setTimeout(() => t.className = '', 4000);
+        }
+
+        // ── Submit Form ──
+        document.getElementById('lpjForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmit');
+            const btnText = document.getElementById('btnText');
+
+            btn.disabled = true;
+            btnText.textContent = "Mengirim...";
+
+            const payload = {
+                posisi: document.getElementById('posisi').value,
+                proker: document.getElementById('proker').value,
+                tanggal: document.getElementById('tanggal').value,
+                anggaran: document.getElementById('anggaran').value,
+                link: document.getElementById('link').value,
+                catatan: document.getElementById('catatan').value
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+
+                if (res.status === 'success') {
+                    showToast("LPJ Berhasil Dicatat!", "success");
+                    document.getElementById('lpjForm').reset();
+                } else {
+                    showToast("Error: " + res.message, "error");
+                }
+            } catch (err) {
+                showToast("Gagal terhubung ke server!", "error");
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = "Simpan Laporan";
+            }
+        });
+    </script>
+</body>
+
+</html>
