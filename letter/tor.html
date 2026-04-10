@@ -159,7 +159,7 @@
                     <thead>
                         <tr>
                             <th class="w-[50px] hidden sm:table-cell text-center">#</th>
-                            <th>Nama Event</th>
+                            <th class="w-1/2">Nama Event</th>
                             <th class="hidden sm:table-cell">Tanggal</th>
                             <th>Lokasi</th>
                             <th class="text-center">Aksi</th>
@@ -203,12 +203,12 @@
                 <tr class="tor-row">
                     <td class="hidden sm:table-cell text-center text-gray-400 font-bold text-xs">${i + 1}</td>
                     <td>
-                        <div class="event-name">${item.eventname || '—'}</div>
+                        <div class="event-name text-xs">${item.eventname || '—'}</div>
                         <div class="event-sub sm:hidden">${item.eventdate}</div>
                     </td>
                     <td class="hidden sm:table-cell">
                         <div class="flex items-center gap-2 text-gray-600 text-[0.82rem]">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <svg class="w-3.5 h-3.5 hidden lg:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             ${item.eventdate || '—'}
                         </div>
                     </td>
