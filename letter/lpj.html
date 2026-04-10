@@ -163,6 +163,37 @@
                 <button type="submit" id="btnSubmit" class="btn-submit">
                     <span id="btnText">Simpan Laporan</span>
                 </button>
+
+                <div id="previewSection" class="mt-12 hidden">
+                    <div class="table-container">
+                        <div class="table-header">
+                            <div class="flex items-center gap-2">
+                                <span class="table-title">Arsip Laporan</span>
+                                <span id="labelPosisi" class="count-badge hidden sm:inline-block opacity-0"></span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="hidden sm:flex items-center gap-2">
+                                    <button onclick="fetchTableData()" class=" btn-create text-xs font-bold">↻ Refresh Data</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="tor-table w-full text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="w-1/2">Program Kerja</th>
+                                        <th class="hidden sm:table-cell">Tanggal</th>
+                                        <th>Anggaran</th>
+                                        <th class="text-center">Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -186,6 +217,53 @@
             t.className = 'show ' + type;
             setTimeout(() => t.className = '', 4000);
         }
+
+        function formatIDR(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
+        }
+
+        async function fetchTableData() {
+            const posisi = document.getElementById('posisi').value;
+            const tableBody = document.getElementById('tableBody');
+            const previewSection = document.getElementById('previewSection');
+            const labelPosisi = document.getElementById('labelPosisi');
+
+            if (!posisi) return;
+
+            previewSection.classList.remove('hidden');
+            labelPosisi.textContent = posisi;
+            tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4">Memuat data...</td></tr>';
+
+            try {
+                const response = await fetch(`${SCRIPT_URL}?posisi=${encodeURIComponent(posisi)}`);
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    if (result.data.length === 0) {
+                        tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4">Belum ada data untuk divisi ini.</td></tr>';
+                        return;
+                    }
+
+                    tableBody.innerHTML = result.data.map(row => `
+                <tr class="tor-row">
+                    <td class="event-name text-xs">${row[0]}</td>
+                    <td>${new Date(row[1]).toLocaleDateString('id-ID')}</td>
+                    <td>${formatIDR(row[2])}</td>
+                    <td class="text-center">
+                        <a href="${row[3]}" target="_blank" class="btn-open">Buka</a>
+                    </td>
+                </tr>
+            `).join('');
+                } else {
+                    tableBody.innerHTML = `<tr><td colspan="4" class="text-center text-red-400 py-4">${result.message}</td></tr>`;
+                }
+            } catch (err) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-red-400 py-4">Gagal memuat data.</td></tr>';
+            }
+        }
+
+        // Trigger refresh saat pilihan posisi berubah
+        document.getElementById('posisi').addEventListener('change', fetchTableData);
 
         // ── Submit Form ──
         document.getElementById('lpjForm').addEventListener('submit', async (e) => {
@@ -215,6 +293,7 @@
                 if (res.status === 'success') {
                     showToast("LPJ Berhasil Dicatat!", "success");
                     document.getElementById('lpjForm').reset();
+                    fetchTableData();
                 } else {
                     showToast("Error: " + res.message, "error");
                 }
