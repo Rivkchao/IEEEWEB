@@ -18,19 +18,20 @@
         <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
 
             <div class="flex items-center gap-3">
-                <div class="ieee-pill px-3 py-1.5 rounded-lg flex items-center gap-2">
-                    <svg class="hidden sm:block" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29"
-                        stroke-width="2.2">
+                <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12)"
+                    class="px-3 py-1.5 rounded-lg flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D91C29" stroke-width="2.2"
+                        class="hidden md:block">
                         <circle cx="12" cy="12" r="3" />
                         <path
                             d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
                     </svg>
-                    <span class="pill-text text-center">IEEE SB UNM</span>
+                    <span style="font-family:Syne,sans-serif; font-size:0.68rem; font-weight:700"
+                        class="text-center">IEEE SB UNM</span>
                 </div>
-                <div>
-                    <h1 class="header-title">TOR <span style="color:#D91C29">Arsip</span></h1>
-                    <p class="header-subtitle hidden sm:block">IEEE Student Branch Universitas Nusa Mandiri</p>
-                </div>
+                <h1 style="font-family:Syne,sans-serif; font-size:1.2rem; font-weight:800">
+                    TOR <span style="color:#D91C29">Archive</span>
+                </h1>
             </div>
 
             <div id="menu"
@@ -72,7 +73,8 @@
                         <div class="bg-white text-black rounded-xl shadow-lg py-2">
                             <a href="/letter/lpj.html" class="block px-4 py-2 hover:bg-gray-100">LPJ</a>
                             <a href="/letter/surat.html" class="block px-4 py-2 hover:bg-gray-100">Surat</a>
-                            <a href="/letter/generate-tor.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">TOR</a>
+                            <a href="/letter/generate-tor.html"
+                                class="block px-4 py-2 text-red-600  hover:bg-gray-100">TOR</a>
                             <a href="/letter/tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">
                                 Arsip TOR
                             </a>
@@ -92,9 +94,8 @@
 
     <main class="max-w-5xl mx-auto px-5 sm:px-8 py-6 sm:py-8">
 
-        <div class="flex flex-col lg:flex-row gap-4 mb-8">
+        <div class="flex flex-col lg:flex-row gap-4 mb-8 items-center">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full lg:w-2/3">
-
                 <div class="stat-card">
                     <div class="stat-icon bg-red-50">
                         <svg width="18" height="18" fill="none" stroke="#D91C29" stroke-width="2" viewBox="0 0 24 24">
@@ -120,12 +121,11 @@
                         <p id="statLatest" class="stat-value-sm">—</p>
                     </div>
                 </div>
-
             </div>
 
             <div class="search-wrap w-full lg:w-1/3">
                 <div class="relative w-full h-full">
-                    <svg class="absolute left-4 top-1/2 -translate-y-[100%] text-gray-400" width="18" height="18"
+                    <svg class="absolute left-4 top-1/2 -translate-y-[50%] text-gray-400" width="18" height="18"
                         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
@@ -138,7 +138,7 @@
         <div class="table-container">
             <div class="table-header">
                 <div class="flex items-center gap-2">
-                    <span class="table-title">Daftar Dokumen</span>
+                    <span class="table-title">Document List</span>
                     <span id="countBadge" class="count-badge hidden sm:inline-block opacity-0">0</span>
                 </div>
                 <div class="flex items-center gap-4">
@@ -178,7 +178,7 @@
 
     <script>
         let allData = [];
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzevgchhOptg9GhlkeAI0sVyTxegKT_0a4T5_LUyik8WnCJuDfmiw1pxe-bitZUkq2d/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbyh0s6Wwp9tCWd87SWGbZB1cbYWD9VajvvoN4TReJuHPqkReGaUvi5GhSKeiCyLeN-Lyg/exec';
 
         async function loadHistory() {
             try {
