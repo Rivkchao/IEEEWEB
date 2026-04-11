@@ -80,7 +80,8 @@
                         class="hidden sm:group-hover:block sm:absolute sm:right-0 pt-2 w-full sm:w-44 bg-transparent py-0">
                         <div class="bg-white text-black rounded-xl shadow-lg py-2">
                             <a href="/letter/lpj.html" class="block px-4 py-2 hover:bg-gray-100">LPJ</a>
-                            <a href="/letter/surat.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Surat</a>
+                            <a href="/letter/surat.html"
+                                class="block px-4 py-2 text-red-600 hover:bg-gray-100">Surat</a>
                             <a href="/letter/generate-tor.html" class="block px-4 py-2 hover:bg-gray-100">TOR</a>
                             <a href="/letter/tor.html" class="block px-4 py-2 hover:bg-gray-100 font-bold">
                                 Arsip TOR
@@ -209,6 +210,48 @@
         </p>
     </div>
 
+    <div id="editModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] hidden items-center justify-center p-4">
+        <div class="section-card w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6 border-bottom pb-4">
+                <h2 style="font-family:Syne; font-weight:800; font-size:1.2rem">Edit <span
+                        style="color:#D91C29">Surat</span></h2>
+                <button onclick="closeEditModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 18L18 6M6 6l18 18" />
+                    </svg>
+                </button>
+            </div>
+
+            <input type="hidden" id="editFileUrl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="input-label">Tempat</label>
+                    <input type="text" id="editTempat" class="input-field" />
+                </div>
+                <div>
+                    <label class="input-label">Tanggal</label>
+                    <input type="text" id="editTgl" class="input-field" />
+                </div>
+                <div>
+                    <label class="input-label">Perihal</label>
+                    <input type="text" id="editPerihal" class="input-field" />
+                </div>
+                <div>
+                    <label class="input-label">Kepada</label>
+                    <input type="text" id="editKepada" class="input-field" />
+                </div>
+                <div class="md:col-span-2">
+                    <label class="input-label">Isi Surat</label>
+                    <textarea id="editIsi" rows="6" class="input-field"></textarea>
+                </div>
+            </div>
+
+            <div class="mt-6 flex gap-3">
+                <button onclick="saveEdit()" id="btnSaveEdit" class="btn-generate w-full">Update Surat</button>
+            </div>
+        </div>
+    </div>
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRMNWfHAOSdYX0ojhEgMdNbOtC1XcpqRftssutcy9N7XLyx7xjzLbQXB54E4q3B6cBuA/exec";
 
@@ -247,21 +290,42 @@
         }
 
         // ── TABLE & BADGE BUILDER ──
-        function buildRow(nomor, perihal, tujuan, url, isNew = false) {
+        function buildRow(nomor, perihal, tujuan, url, isNew = false, tempat = "", isi = "") {
             return `
-            <tr class="srt-row${isNew ? ' row-new' : ''}">
-                <td class="pl-6 py-4">
-                    <div style="font-family:Syne,sans-serif;font-weight:700;font-size:0.85rem;color:var(--ink)">${nomor}</div>
-                    <div style="font-size:0.68rem;color:#bbb;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">${perihal}</div>
-                </td>
-                <td class="py-4" style="font-size:0.85rem;color:var(--muted)">${tujuan || '—'}</td>
-                <td class="pr-6 py-4" style="text-align:right">
+                <tr class="srt-row${isNew ? ' row-new' : ''}" 
+                    data-nomor="${nomor}" 
+                    data-tempat="${tempat}"
+                    data-perihal="${perihal}" 
+                    data-tujuan="${tujuan}" 
+                    data-isi="${isi}"
+                    data-url="${url}">
+                    <td class="pl-6 py-4">
+                        <div style="font-family:Syne,sans-serif;font-weight:700;font-size:0.85rem;color:var(--ink)">${nomor}</div>
+                        <div style="font-size:0.68rem;color:#bbb;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">${perihal}</div>
+                    </td>
+                    <td class="py-4" style="font-size:0.85rem;color:var(--muted)">${tujuan || '—'}</td>
+                    <td class="pr-6 py-4">
+                      <div class="flex justify-end gap-2">
+                       
+                    <button onclick="editSurat(this)" class="btn-preview" style="background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.1)">
+                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    Edit
+                    </button>
                     <a href="${url}" target="_blank" class="btn-preview">
-                        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         Preview
                     </a>
-                </td>
-            </tr>`;
+                    <button onclick="deleteSurat('${url}', this)" class="btn-preview" style="background: rgba(220,38,38,0.1); color: #ef4444; border-color: rgba(220,38,38,0.2); padding: 8px">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                </div>
+                    </td>
+                </tr>`;
         }
 
         function updateCountBadge(n) {
@@ -296,7 +360,16 @@
 
                 if (res.status === 'success') {
                     const tbody = document.getElementById('historyBody');
-                    tbody.insertAdjacentHTML('afterbegin', buildRow(res.nomor, payload.perihal, payload.kepada, res.url, true));
+                    tbody.insertAdjacentHTML('afterbegin', buildRow(
+                        res.nomor,
+                        payload.perihal,
+                        payload.kepada,
+                        res.url,
+                        true,
+                        payload.tempat,
+                        payload.isi_surat
+                    ));
+
                     updateCountBadge(tbody.querySelectorAll('tr').length);
                     showToast(`Surat berhasil dibuat! No. ${res.nomor}`, 'success');
                     ['perihal', 'kepada', 'isi'].forEach(id => document.getElementById(id).value = '');
@@ -311,6 +384,111 @@
             }
         }
 
+        function openEditModal(url) {
+            document.getElementById('editFileUrl').value = url;
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('editModal').classList.add('flex');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('editModal').classList.remove('flex');
+        }
+
+        async function saveEdit() {
+            const btn = document.getElementById('btnSaveEdit');
+            btn.disabled = true;
+            btn.textContent = 'Updating...';
+
+            const payload = {
+                action: 'edit',
+                url: document.getElementById('editFileUrl').value,
+                tempat: document.getElementById('editTempat').value,
+                tgl: document.getElementById('editTgl').value,
+                kepada: document.getElementById('editKepada').value,
+                perihal: document.getElementById('editPerihal').value,
+                isi_surat: document.getElementById('editIsi').value,
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+                if (res.status === 'success') {
+                    showToast('Surat berhasil diperbarui!', 'success');
+                    closeEditModal();
+                    loadHistoryFromDrive(); // Refresh tabel
+                }
+            } catch (e) {
+                showToast('Gagal update surat', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Update Surat';
+            }
+        }
+
+        window.editSurat = function (btn) {
+            const row = btn.closest('tr');
+
+            // Ambil semua data dari atribut baris
+            const url = row.getAttribute('data-url');
+            const tempat = row.getAttribute('data-tempat');
+            const perihal = row.getAttribute('data-perihal');
+            const tujuan = row.getAttribute('data-tujuan');
+            const isi = row.getAttribute('data-isi');
+
+            // Masukkan ke form modal
+            document.getElementById('editFileUrl').value = url;
+            document.getElementById('editTempat').value = tempat;
+            document.getElementById('editPerihal').value = perihal;
+            document.getElementById('editKepada').value = tujuan;
+            document.getElementById('editIsi').value = isi;
+            document.getElementById('editTgl').value = document.getElementById('tgl').value;
+
+            const modal = document.getElementById('editModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        };
+
+        async function deleteSurat(url, btn) {
+            if (!confirm('Apakah Anda yakin ingin menghapus surat ini?')) return;
+
+            // Animasi loading pada tombol
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2v4m0 12v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'delete',
+                        url: url
+                    })
+                });
+                const res = await response.json();
+
+                if (res.status === 'success') {
+                    showToast('Surat berhasil dihapus', 'success');
+                    // Hapus baris dari tabel tanpa refresh
+                    const row = btn.closest('tr');
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateX(20px)';
+                    setTimeout(() => {
+                        row.remove();
+                        updateCountBadge(document.querySelectorAll('#historyBody tr').length);
+                    }, 300);
+                } else {
+                    throw new Error(res.message);
+                }
+            } catch (e) {
+                showToast('Gagal menghapus surat', 'error');
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }
+        }
         async function loadHistoryFromDrive() {
             const tbody = document.getElementById('historyBody');
             if (!tbody) return;
@@ -331,7 +509,15 @@
                 }
 
                 files.forEach(file => {
-                    tbody.insertAdjacentHTML('beforeend', buildRow(file.nomor, file.perihal, file.tujuan, file.url));
+                    tbody.insertAdjacentHTML('beforeend', buildRow(
+                        file.nomor,
+                        file.perihal,
+                        file.tujuan,
+                        file.url,
+                        false,
+                        file.tempat,
+                        file.isi
+                    ));
                 });
                 updateCountBadge(files.length);
             } catch (e) {
