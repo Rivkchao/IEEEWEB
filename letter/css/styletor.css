@@ -27,6 +27,50 @@ h3,
     border-bottom: 1px solid var(--border);
 }
 
+/* --- Section Card --- */
+.section-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    animation: fadeUp 0.4s ease both;
+}
+
+/* --- Form Elements --- */
+.input-label {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.input-field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--red);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.input-field::placeholder {
+    color: #4b5563;
+}
+
+
 /* Cards & Stats */
 .stat-card {
     background: rgba(255, 255, 255, 0.03);
@@ -135,6 +179,36 @@ h3,
     min-width: 500px;
 }
 
+/* --- Buttons --- */
+.btn-generate {
+    width: 100%;
+    background: var(--red);
+    color: white;
+    font-weight: 800;
+    padding: 14px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-generate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px var(--red);
+    opacity: 0.9;
+}
+
+.btn-generate:disabled {
+    background: #374151;
+    cursor: not-allowed;
+    transform: none;
+}
+
 @media (max-width: 640px) {
     .tor-table {
         min-width: 100%;
@@ -219,7 +293,6 @@ h3,
     justify-content: center;
     transition: 0.3s;
 }
-
 .footer-note {
     font-size: 0.65rem;
     color: #94a3b8;

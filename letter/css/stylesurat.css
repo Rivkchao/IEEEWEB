@@ -37,21 +37,16 @@ h3,
 }
 
 /* --- Form Elements --- */
-/* Update di stylesurat.css */
 .input-label {
     display: block;
     font-family: 'Syne', sans-serif;
     font-size: 0.7rem;
-    /* Sedikit lebih kecil agar elegan */
     font-weight: 700;
     color: #9ca3af;
     margin-bottom: 10px;
-    /* Tambah jarak ke input */
     margin-top: 4px;
-    /* Tambah jarak dari elemen di atasnya */
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    /* Lebih lebar sesuai gaya IEEE */
 }
 
 .input-field {
@@ -60,7 +55,6 @@ h3,
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
-    /* Tambah padding agar lebih berisi */
     color: white;
     font-size: 0.95rem;
     transition: all 0.2s;
@@ -107,10 +101,8 @@ h3,
 }
 
 /* --- Table Styling (Untuk Riwayat) --- */
-/* Perbaikan spesifik tabel riwayat */
 .srt-table th {
     color: #64748b;
-    /* Warna abu yang lebih soft */
     font-family: 'Syne', sans-serif;
     font-size: 0.65rem;
     font-weight: 800;
@@ -125,7 +117,6 @@ h3,
     vertical-align: middle;
 }
 
-/* Styling teks nomor surat agar tebal seperti di gambar */
 .srt-row .font-bold {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -133,7 +124,6 @@ h3,
     letter-spacing: -0.02em;
 }
 
-/* Sub-text di bawah nomor surat (Perihal) */
 .srt-row .text-xs {
     color: #9ca3af;
     font-family: 'DM Sans', sans-serif;
@@ -163,7 +153,6 @@ h3,
 
 .btn-generate svg {
     width: 20px;
-    /* Batasi ukuran icon agar proporsional */
     height: 20px;
     stroke-width: 2.5px;
 }
@@ -174,7 +163,7 @@ h3,
     letter-spacing: 0.05em;
 }
 
-/* --- Toast (Sesuai LPJ Tracker) --- */
+/* --- Toast --- */
 #toast {
     position: fixed;
     bottom: 24px;

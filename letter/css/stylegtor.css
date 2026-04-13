@@ -163,7 +163,7 @@ h3,
     letter-spacing: 0.05em;
 }
 
-/* --- Toast (Sesuai LPJ Tracker) --- */
+/* --- Toast --- */
 #toast {
     position: fixed;
     bottom: 24px;
