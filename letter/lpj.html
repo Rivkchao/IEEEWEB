@@ -163,38 +163,43 @@
                 <button type="submit" id="btnSubmit" class="btn-submit">
                     <span id="btnText">Simpan Laporan</span>
                 </button>
+            </form>
+        </div>
 
-                <div id="previewSection" class="mt-12 hidden">
-                    <div class="table-container">
-                        <div class="table-header">
-                            <div class="flex items-center gap-2">
-                                <span class="table-title">Arsip Laporan</span>
-                                <span id="labelPosisi" class="count-badge hidden sm:inline-block opacity-0"></span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="hidden sm:flex items-center gap-2">
-                                    <button onclick="fetchTableData()" class=" btn-create text-xs font-bold">↻ Refresh Data</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="table-wrapper">
-                            <table class="tor-table w-full text-left">
-                                <thead>
-                                    <tr>
-                                        <th class="w-1/2">Program Kerja</th>
-                                        <th class="hidden sm:table-cell">Tanggal</th>
-                                        <th>Anggaran</th>
-                                        <th class="text-center">Link</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tableBody">
-                                </tbody>
-                            </table>
+        <div id="previewSection" class="mt-12 hidden">
+            <div class="table-container">
+                <div class="table-header">
+                    <div class="flex items-center gap-2">
+                        <span class="table-title">Arsip Laporan</span>
+                        <span id="labelPosisi" class="count-badge hidden sm:inline-block opacity-0"></span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="hidden sm:flex items-center gap-2">
+                            <button class=" btn-create text-xs font-bold"><svg width="20" height="20"
+                                    viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M16.2 2H8.8C7.25 2 6 3.25 6 4.8V19.2C6 20.75 7.25 22 8.8 22H16.2C17.75 22 19 20.75 19 19.2V4.8C19 3.25 17.75 2 16.2 2ZM11.16 15.6H9.19L11.08 12.01L9.26 8.4H11.23L12.09 10.37C12.18 10.59 12.25 10.81 12.31 11.04H12.33C12.42 10.79 12.5 10.57 12.59 10.37L13.51 8.4H15.34L13.43 12.01L15.36 15.6H13.39L12.4 13.52C12.31 13.31 12.22 13.04 12.16 12.72H12.14C12.08 13.01 11.99 13.29 11.9 13.52L11.16 15.6Z" />
+                                </svg><a
+                                    href="https://docs.google.com/spreadsheets/d/1MqgDexuRooJwQeoNk4w3fEjCqmbbIaaRNP3-IJZLWjo/edit?usp=sharing">Excel</a></button>
                         </div>
                     </div>
                 </div>
-            </form>
+
+                <div class="table-wrapper">
+                    <table class="tor-table w-full text-left">
+                        <thead>
+                            <tr>
+                                <th class="w-1/2">Program Kerja</th>
+                                <th class="hidden sm:table-cell">Tanggal</th>
+                                <th>Anggaran</th>
+                                <th class="text-center">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <p class="mt-8 text-center text-[0.7rem] text-gray-500 uppercase tracking-widest font-bold">
@@ -250,7 +255,13 @@
                     <td>${new Date(row[1]).toLocaleDateString('id-ID')}</td>
                     <td>${formatIDR(row[2])}</td>
                     <td class="text-center">
-                        <a href="${row[3]}" target="_blank" class="btn-open">Buka</a>
+                       <div class="flex items-center justify-center gap-2">
+                <button onclick="deleteLPJ('${row[0]}', '${row[3]}', this)" class="p-1.5 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all border border-red-500/20">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+            </div>
                     </td>
                 </tr>
             `).join('');
@@ -262,6 +273,41 @@
             }
         }
 
+        async function deleteLPJ(proker, link, btn) {
+            const posisi = document.getElementById('posisi').value;
+            if (!confirm(`Hapus data laporan "${proker}"?`)) return;
+
+            // Loading state
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<svg class="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2v4m0 12v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'delete',
+                        posisi: posisi,
+                        proker: proker,
+                        link: link
+                    })
+                });
+                const res = await response.json();
+
+                if (res.status === 'success') {
+                    showToast("Laporan dihapus!", "success");
+                    // Hapus baris dari tabel
+                    btn.closest('tr').remove();
+                } else {
+                    alert("Gagal menghapus: " + res.message);
+                }
+            } catch (e) {
+                showToast("Kesalahan koneksi!", "error");
+            } finally {
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }
+        }
         // Trigger refresh saat pilihan posisi berubah
         document.getElementById('posisi').addEventListener('change', fetchTableData);
 
